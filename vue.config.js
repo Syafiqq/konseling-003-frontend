@@ -1,4 +1,14 @@
 // vue.config.js
 module.exports = {
-  // options...
+  css: {
+    loaderOptions: {
+      sass: {
+        data: `@import "@/resources/scss/app.scss";`,
+        minimize: { discardComments: { removeAll: true } }
+      },
+      css: {
+        minimize: { discardComments: { removeAll: true } }
+      }
+    }
+  }
 }
