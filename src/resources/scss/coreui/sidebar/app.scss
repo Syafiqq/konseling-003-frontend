@@ -1,0 +1,15 @@
+.sidebar {
+  .nav-link {
+    &.active {
+      font-weight: bolder;
+    }
+  }
+}
+
+.sidebar {
+  .nav-link {
+    .nav-icon {
+      font-size: 18px;
+    }
+  }
+}
