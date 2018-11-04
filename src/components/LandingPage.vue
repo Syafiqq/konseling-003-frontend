@@ -4,18 +4,12 @@
          aria-hidden="false">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
           <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <aplayer autoplay
+                     :music="songs[0]"
+                     :list="songs"
+                     repeat="repeat-all"
+            ></aplayer>
           </div>
         </div>
       </div>
@@ -229,11 +223,50 @@
 
 <script>
 import fab from 'vue-fab'
+import aplayer from 'vue-aplayer'
 
 export default {
   name: 'LandingPage',
   data () {
     return {
+      songs: [
+        {
+          autoplay: true,
+          title: 'Samnple Audio',
+          artist: 'Samnple Audio',
+          src: require('../assets/song/sample-audio.mp3')
+        },
+        {
+          autoplay: true,
+          title: 'Samnple Audio',
+          artist: 'Samnple Audio',
+          src: require('../assets/song/sample-audio.mp3')
+        },
+        {
+          autoplay: true,
+          title: 'Samnple Audio',
+          artist: 'Samnple Audio',
+          src: require('../assets/song/sample-audio.mp3')
+        },
+        {
+          autoplay: true,
+          title: 'Samnple Audio',
+          artist: 'Samnple Audio',
+          src: require('../assets/song/sample-audio.mp3')
+        },
+        {
+          autoplay: true,
+          title: 'Samnple Audio',
+          artist: 'Samnple Audio',
+          src: require('../assets/song/sample-audio.mp3')
+        },
+        {
+          autoplay: true,
+          title: 'Samnple Audio',
+          artist: 'Samnple Audio',
+          src: require('../assets/song/sample-audio.mp3')
+        }
+      ],
       fabActions: [
         {
           name: 'music',
@@ -248,13 +281,18 @@ export default {
     }
   },
   components: {
-    fab
+    fab,
+    aplayer
   }
 }
 </script>
 
 <style scoped lang="scss">
 @import "../resources/scss/landing-page/landing-page";
+
+.modal-body {
+  padding: 2px;
+}
 
 .showcase-3 {
   background-image: url('~@/assets/img/landing-page/bg-showcase-3.jpg');
