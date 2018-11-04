@@ -200,12 +200,36 @@
         </div>
       </div>
     </footer>
+    <fab :actions="fabActions"
+         main-icon="radio_button_checked"
+         @music="music"
+    ></fab>
   </div>
 </template>
 
 <script>
+import fab from 'vue-fab'
+
 export default {
-  name: 'LandingPage'
+  name: 'LandingPage',
+  data () {
+    return {
+      fabActions: [
+        {
+          name: 'music',
+          icon: 'music_note'
+        }
+      ]
+    }
+  },
+  methods: {
+    music () {
+      console.log('Cache Cleared')
+    }
+  },
+  components: {
+    fab
+  }
 }
 </script>
 
