@@ -1,19 +1,5 @@
 <template>
   <div class="landing-page">
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="false">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            <aplayer autoplay
-                     :music="songs[0]"
-                     :list="songs"
-                     repeat="repeat-all"
-            ></aplayer>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
@@ -214,85 +200,22 @@
         </div>
       </div>
     </footer>
-    <fab :actions="fabActions"
-         main-icon="radio_button_checked"
-         @music="music"
-    ></fab>
   </div>
 </template>
 
 <script>
-import fab from 'vue-fab'
-import aplayer from 'vue-aplayer'
-
 export default {
   name: 'LandingPage',
   data () {
-    return {
-      songs: [
-        {
-          autoplay: true,
-          title: 'Samnple Audio',
-          artist: 'Samnple Audio',
-          src: require('../assets/song/sample-audio.mp3')
-        },
-        {
-          autoplay: true,
-          title: 'Samnple Audio',
-          artist: 'Samnple Audio',
-          src: require('../assets/song/sample-audio.mp3')
-        },
-        {
-          autoplay: true,
-          title: 'Samnple Audio',
-          artist: 'Samnple Audio',
-          src: require('../assets/song/sample-audio.mp3')
-        },
-        {
-          autoplay: true,
-          title: 'Samnple Audio',
-          artist: 'Samnple Audio',
-          src: require('../assets/song/sample-audio.mp3')
-        },
-        {
-          autoplay: true,
-          title: 'Samnple Audio',
-          artist: 'Samnple Audio',
-          src: require('../assets/song/sample-audio.mp3')
-        },
-        {
-          autoplay: true,
-          title: 'Samnple Audio',
-          artist: 'Samnple Audio',
-          src: require('../assets/song/sample-audio.mp3')
-        }
-      ],
-      fabActions: [
-        {
-          name: 'music',
-          icon: 'music_note'
-        }
-      ]
-    }
+    return {}
   },
-  methods: {
-    music () {
-      window.jQuery('#exampleModal').modal()
-    }
-  },
-  components: {
-    fab,
-    aplayer
-  }
+  methods: {},
+  components: {}
 }
 </script>
 
 <style scoped lang="scss">
 @import "../resources/scss/landing-page/landing-page";
-
-.modal-body {
-  padding: 2px;
-}
 
 .showcase-3 {
   background-image: url('~@/assets/img/landing-page/bg-showcase-3.jpg');
