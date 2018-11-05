@@ -85,12 +85,22 @@ export default {
     aplayer
   },
   mounted () {
-    const playedPromise = this.$refs.player.audio.play()
+    let vm = this
+    let currentIndex = window.Cookies.get('audio_current_index')
+    let currentTime = window.Cookies.get('audio_current_time')
+    vm.$refs.player.playIndex = currentIndex || 0
+    vm.$refs.player.audio.currentTime = currentTime || 0.0
+    const playedPromise = vm.$refs.player.audio.play()
     if (playedPromise) {
       playedPromise.catch((e) => {
-        this.music()
+        vm.music()
       })
     }
+    window.$(window).on('beforeunload', function (e) {
+      e.preventDefault()
+      window.Cookies.set('audio_current_index', vm.$refs.player.playIndex)
+      window.Cookies.set('audio_current_time', vm.$refs.player.audio.currentTime)
+    })
   }
 }
 </script>
