@@ -5,10 +5,10 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-body">
-            <aplayer autoplay
-                     :music="songs[0]"
+            <aplayer :music="songs[0]"
                      :list="songs"
                      repeat="repeat-all"
+                     ref="player"
             ></aplayer>
           </div>
         </div>
@@ -83,6 +83,14 @@ export default {
   components: {
     fab,
     aplayer
+  },
+  mounted () {
+    const playedPromise = this.$refs.player.audio.play()
+    if (playedPromise) {
+      playedPromise.catch((e) => {
+        this.music()
+      })
+    }
   }
 }
 </script>
