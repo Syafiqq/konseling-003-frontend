@@ -1,7 +1,6 @@
-<template>
-  <div class="home">
-    <LandingPage></LandingPage>
-  </div>
+<template lang="pug">
+  .home
+    LandingPage
 </template>
 
 <script>

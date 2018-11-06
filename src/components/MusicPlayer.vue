@@ -1,24 +1,11 @@
-<template>
-  <div class="music-player">
-    <div class="modal fade" id="musicPlayerModal" tabindex="-1" role="dialog" aria-labelledby="musicPlayerModalLabel"
-         aria-hidden="false">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-body">
-            <aplayer :music="songs[0]"
-                     :list="songs"
-                     repeat="repeat-all"
-                     ref="player"
-            ></aplayer>
-          </div>
-        </div>
-      </div>
-    </div>
-    <fab :actions="fabActions"
-         main-icon="radio_button_checked"
-         @music="music"
-    ></fab>
-  </div>
+<template lang="pug">
+  .music-player
+    #musicPlayerModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='musicPlayerModalLabel', aria-hidden='false')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-body
+            aplayer(:music='songs[0]', :list='songs', repeat='repeat-all', ref='player')
+    fab(:actions='fabActions', main-icon='radio_button_checked', @music='music')
 </template>
 
 <script>

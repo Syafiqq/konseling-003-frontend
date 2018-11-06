@@ -1,7 +1,6 @@
-<template>
-  <div class="register">
-    <RegisterPage></RegisterPage>
-  </div>
+<template lang="pug">
+  .register
+    RegisterPage
 </template>
 
 <script>

@@ -1,7 +1,6 @@
-<template>
-  <div class="login">
-    <LoginPage></LoginPage>
-  </div>
+<template lang="pug">
+  .login
+    LoginPage
 </template>
 
 <script>

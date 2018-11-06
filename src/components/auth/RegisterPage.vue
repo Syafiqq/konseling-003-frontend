@@ -1,63 +1,40 @@
-<template>
-  <div class="register-page app flex-row align-items-center">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <div class="card mx-4">
-            <div class="card-body p-4">
-              <h1>Register</h1>
-              <p class="text-muted">Create your account</p>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="icon-user"></i>
-                  </span>
-                </div>
-                <input class="form-control" type="text" placeholder="Username">
-              </div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">@</span>
-                </div>
-                <input class="form-control" type="text" placeholder="Email">
-              </div>
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="icon-lock"></i>
-                  </span>
-                </div>
-                <input class="form-control" type="password" placeholder="Password">
-              </div>
-              <div class="input-group mb-4">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="icon-lock"></i>
-                  </span>
-                </div>
-                <input class="form-control" type="password" placeholder="Repeat password">
-              </div>
-              <button class="btn btn-block btn-success" type="button">Create Account</button>
-            </div>
-            <div class="card-footer p-4">
-              <div class="row">
-                <div class="col-6">
-                  <button class="btn btn-block btn-facebook" type="button">
-                    <span>facebook</span>
-                  </button>
-                </div>
-                <div class="col-6">
-                  <button class="btn btn-block btn-twitter" type="button">
-                    <span>twitter</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  .register-page.app.flex-row.align-items-center
+    .container
+      .row.justify-content-center
+        .col-md-6
+          .card.mx-4
+            .card-body.p-4
+              h1 Register
+              p.text-muted Create your account
+              .input-group.mb-3
+                .input-group-prepend
+                  span.input-group-text
+                    i.icon-user
+                input.form-control(type='text', placeholder='Username')
+              .input-group.mb-3
+                .input-group-prepend
+                  span.input-group-text @
+                input.form-control(type='text', placeholder='Email')
+              .input-group.mb-3
+                .input-group-prepend
+                  span.input-group-text
+                    i.icon-lock
+                input.form-control(type='password', placeholder='Password')
+              .input-group.mb-4
+                .input-group-prepend
+                  span.input-group-text
+                    i.icon-lock
+                input.form-control(type='password', placeholder='Repeat password')
+              button.btn.btn-block.btn-success(type='button') Create Account
+            .card-footer.p-4
+              .row
+                .col-6
+                  button.btn.btn-block.btn-facebook(type='button')
+                    span facebook
+                .col-6
+                  button.btn.btn-block.btn-twitter(type='button')
+                    span twitter
 </template>
 
 <script>

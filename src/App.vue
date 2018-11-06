@@ -1,8 +1,7 @@
-<template>
-  <div id="app">
-    <MusicPlayer></MusicPlayer>
-    <router-view/>
-  </div>
+<template lang="pug">
+  #app
+    MusicPlayer
+    router-view
 </template>
 
 <script>
