@@ -56,14 +56,14 @@ export default {
       ],
       fabActions: [
         {
-          name: 'music',
+          name: 'toggleMusic',
           icon: 'music_note'
         }
       ]
     }
   },
   methods: {
-    music () {
+    toggleMusic () {
       window.jQuery('#musicPlayerModal').modal()
     }
   },
