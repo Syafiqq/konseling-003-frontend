@@ -5,11 +5,9 @@
         .modal-content
           .modal-body
             aplayer(:music='songs[0]', :list='songs', repeat='repeat-all', ref='player')
-    fab(:actions='fabActions', main-icon='radio_button_checked', @music='music')
 </template>
 
 <script>
-import fab from 'vue-fab'
 import aplayer from 'vue-aplayer'
 
 export default {
@@ -54,12 +52,6 @@ export default {
           src: require('../assets/song/sample-audio.mp3')
         }
       ],
-      fabActions: [
-        {
-          name: 'toggleMusic',
-          icon: 'music_note'
-        }
-      ]
     }
   },
   methods: {
@@ -68,7 +60,6 @@ export default {
     }
   },
   components: {
-    fab,
     aplayer
   },
   mounted () {
