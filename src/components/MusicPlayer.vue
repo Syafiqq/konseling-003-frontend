@@ -9,6 +9,7 @@
 
 <script>
 import aplayer from 'vue-aplayer'
+import EventBus from '../event-bus'
 
 export default {
   name: 'MusicPlayer',
@@ -51,34 +52,37 @@ export default {
           artist: 'Samnple Audio',
           src: require('../assets/song/sample-audio.mp3')
         }
-      ],
+      ]
     }
   },
   methods: {
     toggleMusic () {
-      window.jQuery('#musicPlayerModal').modal()
+      window.$('#musicPlayerModal').modal()
+    },
+    loadMusic (vm) {
+      let currentIndex = window.Cookies.get('audio_current_index')
+      let currentTime = window.Cookies.get('audio_current_time')
+      vm.$refs.player.playIndex = currentIndex || 0
+      vm.$refs.player.audio.currentTime = currentTime || 0.0
+      const playedPromise = vm.$refs.player.audio.play()
+      if (playedPromise) {
+        playedPromise.catch((e) => {
+          vm.toggleMusic()
+        })
+      }
+      window.$(window).on('beforeunload', function (e) {
+        e.preventDefault()
+        window.Cookies.set('audio_current_index', vm.$refs.player.playIndex)
+        window.Cookies.set('audio_current_time', vm.$refs.player.audio.currentTime)
+      })
     }
   },
   components: {
     aplayer
   },
   mounted () {
-    let vm = this
-    let currentIndex = window.Cookies.get('audio_current_index')
-    let currentTime = window.Cookies.get('audio_current_time')
-    vm.$refs.player.playIndex = currentIndex || 0
-    vm.$refs.player.audio.currentTime = currentTime || 0.0
-    const playedPromise = vm.$refs.player.audio.play()
-    if (playedPromise) {
-      playedPromise.catch((e) => {
-        vm.music()
-      })
-    }
-    window.$(window).on('beforeunload', function (e) {
-      e.preventDefault()
-      window.Cookies.set('audio_current_index', vm.$refs.player.playIndex)
-      window.Cookies.set('audio_current_time', vm.$refs.player.audio.currentTime)
-    })
+    this.loadMusic(this)
+    EventBus.$on('mp-toggle-window', () => this.toggleMusic())
   }
 }
 </script>
