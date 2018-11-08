@@ -1,7 +1,8 @@
 <template lang="pug">
   #app
     MusicPlayer
-    router-view
+    transition
+      router-view
 </template>
 
 <script>
