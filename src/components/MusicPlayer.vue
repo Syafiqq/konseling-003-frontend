@@ -10,49 +10,13 @@
 <script>
 import aplayer from 'vue-aplayer'
 import EventBus from '../event-bus'
+import * as Tracks from '../music-tracks'
 
 export default {
   name: 'MusicPlayer',
   data () {
     return {
-      songs: [
-        {
-          autoplay: true,
-          title: 'Samnple Audio',
-          artist: 'Samnple Audio',
-          src: require('../assets/song/sample-audio.mp3')
-        },
-        {
-          autoplay: true,
-          title: 'Samnple Audio',
-          artist: 'Samnple Audio',
-          src: require('../assets/song/sample-audio.mp3')
-        },
-        {
-          autoplay: true,
-          title: 'Samnple Audio',
-          artist: 'Samnple Audio',
-          src: require('../assets/song/sample-audio.mp3')
-        },
-        {
-          autoplay: true,
-          title: 'Samnple Audio',
-          artist: 'Samnple Audio',
-          src: require('../assets/song/sample-audio.mp3')
-        },
-        {
-          autoplay: true,
-          title: 'Samnple Audio',
-          artist: 'Samnple Audio',
-          src: require('../assets/song/sample-audio.mp3')
-        },
-        {
-          autoplay: true,
-          title: 'Samnple Audio',
-          artist: 'Samnple Audio',
-          src: require('../assets/song/sample-audio.mp3')
-        }
-      ]
+      songs: Tracks
     }
   },
   methods: {
