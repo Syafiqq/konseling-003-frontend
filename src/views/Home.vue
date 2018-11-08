@@ -8,6 +8,7 @@
 // @ is an alias to /src
 import fab from 'vue-fab'
 import LandingPage from '@/components/LandingPage.vue'
+import EventBus from '../event-bus'
 
 export default {
   name: 'home',
@@ -27,7 +28,7 @@ export default {
   },
   methods: {
     music () {
-      this.$emit('mp-toggle-window')
+      EventBus.$emit('mp-toggle-window')
     }
   }
 }
