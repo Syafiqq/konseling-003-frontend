@@ -1,7 +1,7 @@
 <template lang="pug">
   #app
-    MusicPlayer(ref='mp')
-    router-view(v-on:mp-toggle-window='$refs.mp.toggleMusic()')
+    MusicPlayer
+    router-view
 </template>
 
 <script>
