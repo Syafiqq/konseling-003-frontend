@@ -66,8 +66,15 @@ export default {
       vm.$refs.player.audio.currentTime = currentTime || 0.0
       const playedPromise = vm.$refs.player.audio.play()
       if (playedPromise) {
-        playedPromise.catch((e) => {
-          vm.toggleMusic()
+        playedPromise.catch(() => {
+          this.$swal({
+            title: 'Do you want to play the music',
+            showCancelButton: true
+          }).then((result) => {
+            if (result.value) {
+              vm.$refs.player.thenPlay()
+            }
+          })
         })
       }
       window.$(window).on('beforeunload', function (e) {
