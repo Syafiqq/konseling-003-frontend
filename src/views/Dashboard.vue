@@ -17,7 +17,7 @@
         sidebar-form
         sidebar-nav(:navItems='nav')
         sidebar-footer
-        sidebar-minimizer
+        sidebar-minimizer(@click.native="publish('nav-sidebar-minimizer')")
       main.main
         breadcrumb(:list='list')
         .container-fluid
