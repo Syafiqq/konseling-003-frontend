@@ -1,11 +1,11 @@
 <template lang="pug">
   .app
     app-header(fixed)
-      sidebar-toggler.d-lg-none(display='md' mobile)
+      sidebar-toggler.d-lg-none(display='md' mobile, @click.native="publish('nav-navbar-minimizer')")
       b-link.navbar-brand(href='javascript:void(0)')
         img.navbar-brand-full(src='../assets/img/logo.png', width='30', height='30', alt='Konseling')
         img.navbar-brand-minimized(src='../assets/img/logo.png', width='30', height='30', alt='Konseling')
-      sidebar-toggler.navbar-minimizer.d-md-down-none(:defaultOpen='toggle_na' display='lg')
+      sidebar-toggler.navbar-minimizer.d-md-down-none(:defaultOpen='toggle_na' display='lg', @click.native="publish('nav-navbar-minimizer')")
       b-navbar-nav.ml-auto
         b-nav-item.d-md-down-none(href='javascript:void(0)')
           i.fas.fa-music
@@ -47,6 +47,7 @@ import {
   SidebarToggler
 } from '@coreui/vue'
 import nav from '../nav'
+import EventBus from '../event-bus'
 
 export default {
   name: 'Dashboard',
@@ -76,6 +77,11 @@ export default {
     },
     list () {
       return this.$route.matched.filter((route) => route.name || route.meta.label)
+    }
+  },
+  methods: {
+    publish (m) {
+      EventBus.$emit(m)
     }
   }
 }
