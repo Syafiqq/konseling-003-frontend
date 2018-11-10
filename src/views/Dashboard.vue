@@ -1,11 +1,11 @@
 <template lang="pug">
   .app
     app-header(fixed)
-      sidebar-toggler.d-lg-none(display='md' mobile, @click.native="publish('nav-navbar-minimizer')")
+      sidebar-toggler.d-lg-none(:defaultOpen='first_toggle' display='md' mobile, @click.native="publish('nav-navbar-minimizer')")
       b-link.navbar-brand(href='javascript:void(0)')
         img.navbar-brand-full(src='../assets/img/logo.png', width='30', height='30', alt='Konseling')
         img.navbar-brand-minimized(src='../assets/img/logo.png', width='30', height='30', alt='Konseling')
-      sidebar-toggler.navbar-minimizer.d-md-down-none(:defaultOpen='toggle_na' display='lg', @click.native="publish('nav-navbar-minimizer')")
+      sidebar-toggler.navbar-minimizer.d-md-down-none(:defaultOpen='first_toggle' display='lg', @click.native="publish('nav-navbar-minimizer')")
       b-navbar-nav.ml-auto
         b-nav-item.d-md-down-none(href='javascript:void(0)')
           i.fas.fa-music
@@ -68,7 +68,7 @@ export default {
   data () {
     return {
       nav: nav.items,
-      toggle_na: this.$cookies.get('navbar-toggle') === 'true'
+      first_toggle: this.$cookies.get('navbar-toggle') == null ? true : this.$cookies.get('navbar-toggle') === 'true'
     }
   },
   computed: {
