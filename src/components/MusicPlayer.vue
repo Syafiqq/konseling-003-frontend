@@ -35,7 +35,9 @@ export default {
             toast: true,
             position: 'bottom',
             title: 'Do you want to play the music ?',
-            confirmButtonText: 'Yes'
+            confirmButtonText: 'Yes',
+            showCancelButton: true,
+            cancelButtonText: 'No'
           }).then((result) => {
             if (result.value) {
               vm.$refs.player.thenPlay()
