@@ -1,28 +1,28 @@
 <template lang="pug">
   .app
-    AppHeader(fixed)
-      SidebarToggler.d-lg-none(display='md' mobile)
+    app-header(fixed)
+      sidebar-toggler.d-lg-none(display='md' mobile)
       b-link.navbar-brand(href='javascript:void(0)')
         img.navbar-brand-full(src='../assets/img/logo.png', width='30', height='30', alt='Konseling')
         img.navbar-brand-minimized(src='../assets/img/logo.png', width='30', height='30', alt='Konseling')
-      SidebarToggler.navbar-minimizer.d-md-down-none(:defaultOpen='toggle_na' display='lg')
+      sidebar-toggler.navbar-minimizer.d-md-down-none(:defaultOpen='toggle_na' display='lg')
       b-navbar-nav.ml-auto
         b-nav-item.d-md-down-none(href='javascript:void(0)')
           i.fas.fa-music
         b-nav-item.d-md-down-none(href='javascript:void(0)')
           i.fas.fa-power-off
     .app-body
-      AppSidebar(fixed)
-        SidebarHeader
-        SidebarForm
-        SidebarNav(:navItems='nav')
-        SidebarFooter
-        SidebarMinimizer
+      app-sidebar(fixed)
+        sidebar-header
+        sidebar-form
+        sidebar-nav(:navItems='nav')
+        sidebar-footer
+        sidebar-minimizer
       main.main
-        Breadcrumb(:list='list')
+        breadcrumb(:list='list')
         .container-fluid
-      AppAside(fixed='')
-    TheFooter
+      app-aside(fixed='')
+    the-footer
       div
         a(href='https://coreui.io') CoreUI
         span.ml-1 &copy; 2018 creativeLabs.
