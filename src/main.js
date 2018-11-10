@@ -21,6 +21,7 @@ Vue.config.productionTip = false
 Vue.use(VueSweetalert2)
 Vue.use(BootstrapVue)
 Vue.use(VueCookies)
+require('./resources/js/vue-nav-toggle-recorder')
 
 new Vue({
   router,
