@@ -3,9 +3,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import pace from 'pace-progress'
+import BootstrapVue from 'bootstrap-vue'
 import PerfectScrollbar from 'perfect-scrollbar'
 import VueSweetalert2 from 'vue-sweetalert2'
-import Cookie from 'js-cookie'
+import VueCookies from 'vue-cookies'
 
 require('./resources/js/bootstrap.js')
 
@@ -16,9 +17,10 @@ window.$.fn.perfectScrollbar = function (options) {
     return new PerfectScrollbar(elm, options || {})
   })
 }
-window.Cookies = Cookie
 Vue.config.productionTip = false
 Vue.use(VueSweetalert2)
+Vue.use(BootstrapVue)
+Vue.use(VueCookies)
 
 new Vue({
   router,
