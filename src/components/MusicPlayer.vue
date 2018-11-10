@@ -24,8 +24,8 @@ export default {
       window.$('#musicPlayerModal').modal()
     },
     loadMusic (vm) {
-      let currentIndex = window.Cookies.get('audio_current_index')
-      let currentTime = window.Cookies.get('audio_current_time')
+      let currentIndex = vm.$cookies.get('audio_current_index')
+      let currentTime = vm.$cookies.get('audio_current_time')
       vm.$refs.player.playIndex = currentIndex || 0
       vm.$refs.player.audio.currentTime = currentTime || 0.0
       const playedPromise = vm.$refs.player.audio.play()
@@ -47,8 +47,8 @@ export default {
       }
       window.$(window).on('beforeunload', function (e) {
         e.preventDefault()
-        window.Cookies.set('audio_current_index', vm.$refs.player.playIndex)
-        window.Cookies.set('audio_current_time', vm.$refs.player.audio.currentTime)
+        vm.$cookies.set('audio_current_index', vm.$refs.player.playIndex)
+        vm.$cookies.set('audio_current_time', vm.$refs.player.audio.currentTime)
       })
     }
   },
