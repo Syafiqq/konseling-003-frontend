@@ -32,8 +32,10 @@ export default {
       if (playedPromise) {
         playedPromise.catch(() => {
           this.$swal({
-            title: 'Do you want to play the music',
-            showCancelButton: true
+            toast: true,
+            position: 'bottom',
+            title: 'Do you want to play the music ?',
+            confirmButtonText: 'Yes'
           }).then((result) => {
             if (result.value) {
               vm.$refs.player.thenPlay()
