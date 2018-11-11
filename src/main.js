@@ -8,6 +8,8 @@ import PerfectScrollbar from 'perfect-scrollbar'
 import VueSweetalert2 from 'vue-sweetalert2'
 import VueCookies from 'vue-cookies'
 
+import PlainContainer from './containers/PlainContainer.vue'
+
 require('./resources/js/bootstrap.js')
 
 pace.start()
@@ -22,6 +24,8 @@ Vue.use(VueSweetalert2)
 Vue.use(BootstrapVue)
 Vue.use(VueCookies)
 require('./resources/js/vue-nav-toggle-recorder')
+
+Vue.component('plain-container', PlainContainer)
 
 new Vue({
   router,
