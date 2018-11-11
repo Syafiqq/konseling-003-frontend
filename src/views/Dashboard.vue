@@ -7,7 +7,7 @@
         img.navbar-brand-minimized(src='../assets/img/logo.png', width='30', height='30', alt='Konseling')
       sidebar-toggler.navbar-minimizer.d-md-down-none(:defaultOpen='first_toggle' display='lg', @click.native="publish('nav-navbar-minimizer')")
       b-navbar-nav.ml-auto
-        b-nav-item.d-md-down-none(href='javascript:void(0)')
+        b-nav-item.d-md-down-none(href='javascript:void(0)' @click="publish('mp-toggle-window')")
           i.fas.fa-music
         b-nav-item.d-md-down-none(href='javascript:void(0)')
           i.fas.fa-power-off
