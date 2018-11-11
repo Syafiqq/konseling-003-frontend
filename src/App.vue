@@ -1,20 +1,38 @@
 <template lang="pug">
   #app
     MusicPlayer
-    transition
-      router-view
+    component(:is='layout')
+      transition
+        router-view
 </template>
 
 <script>
 // @ is an alias to /src
-import MusicPlayer from '@/components/MusicPlayer.vue'
+import MusicPlayer from './components/MusicPlayer.vue'
+
+const defaultLayout = 'plain-container'
 
 export default {
   name: 'app',
   components: {
     MusicPlayer
   },
-  methods: {}
+  methods: {},
+  computed: {
+    layout () {
+      return (this.$route.meta.layout || defaultLayout)
+    }
+  },
+
+  created () {
+    // nothing defined here (when this.$route.path is other than "/")
+    console.log(this.$route, this.$route.meta.layout)
+  },
+
+  updated () {
+    // something defined here whatever the this.$route.path
+    console.log(this.$route, this.$route.meta.layout)
+  }
 }
 </script>
 
