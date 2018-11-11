@@ -8,7 +8,7 @@
     include ../partials/default-sidebar.pug
 
   block main
-    include ../partials/default-main.pug
+    include ../partials/main-no-breadcrumb.pug
 
   block footer
     include ../partials/default-footer.pug
