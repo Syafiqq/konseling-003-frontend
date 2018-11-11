@@ -1,17 +1,17 @@
 <template lang="pug">
-  extends ../partials/root
+  extends ../partials/root.pug
 
   block header
-    include ../partials/default-header
+    include ../partials/default-header.pug
 
   block sidebar
-    include ../partials/default-sidebar
+    include ../partials/default-sidebar.pug
 
   block main
-    include ../partials/default-main
+    include ../partials/default-main.pug
 
   block footer
-    include ../partials/default-footer
+    include ../partials/default-footer.pug
 </template>
 
 <script>
