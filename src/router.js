@@ -16,17 +16,17 @@ export default new Router({
     {
       path: '/auth/login',
       name: 'auth-login',
-      component: () => import('@/views/auth/Login.vue')
+      component: () => import('./views/auth/Login.vue')
     },
     {
       path: '/auth/register',
       name: 'auth-register',
-      component: () => import('@/views/auth/Register.vue')
+      component: () => import('./views/auth/Register.vue')
     },
     {
       path: '/home',
       name: 'home',
-      component: () => import('@/views/Dashboard.vue')
+      component: () => import('./views/Dashboard.vue')
     }
   ]
 })
