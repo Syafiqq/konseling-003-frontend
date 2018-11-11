@@ -1,5 +1,17 @@
 <template lang="pug">
-  include ../partials/default-admin-partial.pug
+  extends ../partials/root
+
+  block header
+    include ../partials/default-header
+
+  block sidebar
+    include ../partials/default-sidebar
+
+  block main
+    include ../partials/default-main
+
+  block footer
+    include ../partials/default-footer
 </template>
 
 <script>
