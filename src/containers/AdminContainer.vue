@@ -1,0 +1,91 @@
+<template lang="pug">
+  .app
+    app-header(fixed)
+      sidebar-toggler.d-lg-none(:defaultOpen='first_toggle' display='md' mobile, @click.native="publish('nav-navbar-minimizer')")
+      b-link.navbar-brand(href='javascript:void(0)')
+        img.navbar-brand-full(src='../assets/img/logo.png', width='30', height='30', alt='Konseling')
+        img.navbar-brand-minimized(src='../assets/img/logo.png', width='30', height='30', alt='Konseling')
+      sidebar-toggler.navbar-minimizer.d-md-down-none(:defaultOpen='first_toggle' display='lg', @click.native="publish('nav-navbar-minimizer')")
+      b-navbar-nav.ml-auto
+        b-nav-item.d-md-down-none(href='javascript:void(0)' @click="publish('mp-toggle-window')")
+          i.fas.fa-music
+        b-nav-item.d-md-down-none(href='javascript:void(0)')
+          i.fas.fa-power-off
+    .app-body
+      app-sidebar(fixed)
+        sidebar-header
+        sidebar-form
+        sidebar-nav(:navItems='nav')
+        sidebar-footer
+        sidebar-minimizer(@click.native="publish('nav-sidebar-minimizer')")
+      main.main
+        breadcrumb(:list='list')
+        .container-fluid
+    the-footer
+      div
+        a(href='https://coreui.io') CoreUI
+        span.ml-1 &copy; 2018 creativeLabs.
+      .ml-auto
+        span.mr-1 Powered by
+        a(href='https://coreui.io') CoreUI for Vue
+</template>
+
+<script>
+import {
+  Aside as AppAside,
+  AsideToggler,
+  Breadcrumb,
+  Footer as TheFooter,
+  Header as AppHeader,
+  Sidebar as AppSidebar,
+  SidebarFooter,
+  SidebarForm,
+  SidebarHeader,
+  SidebarMinimizer,
+  SidebarNav,
+  SidebarToggler
+} from '@coreui/vue'
+import nav from '../nav'
+import EventBus from '../event-bus'
+
+export default {
+  name: 'AdminContainer',
+  components: {
+    AsideToggler,
+    AppHeader,
+    AppSidebar,
+    AppAside,
+    TheFooter,
+    Breadcrumb,
+    SidebarForm,
+    SidebarFooter,
+    SidebarToggler,
+    SidebarHeader,
+    SidebarNav,
+    SidebarMinimizer
+  },
+  data () {
+    return {
+      nav: nav.items,
+      first_toggle: this.$cookies.get('navbar-toggle') == null ? true : this.$cookies.get('navbar-toggle') === 'true'
+    }
+  },
+  computed: {
+    name () {
+      return this.$route.name
+    },
+    list () {
+      return this.$route.matched.filter((route) => route.name || route.meta.label)
+    }
+  },
+  methods: {
+    publish (m) {
+      EventBus.$emit(m)
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
