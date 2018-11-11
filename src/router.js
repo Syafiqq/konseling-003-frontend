@@ -10,21 +10,25 @@ export default new Router({
     {
       path: '/',
       name: 'root',
+      meta: { layout: 'plain-container' },
       component: require('./views/Home.vue').default
     },
     {
       path: '/auth/login',
       name: 'auth-login',
+      meta: { layout: 'plain-container' },
       component: () => import('./views/auth/Login.vue')
     },
     {
       path: '/auth/register',
       name: 'auth-register',
+      meta: { layout: 'plain-container' },
       component: () => import('./views/auth/Register.vue')
     },
     {
       path: '/home',
       name: 'home',
+      meta: { layout: 'plain-container' },
       component: () => import('./views/Dashboard.vue')
     }
   ]
