@@ -28,7 +28,7 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      meta: { layout: 'admin-container' },
+      meta: { layout: 'admin-container-no-aside' },
       component: () => import('./views/Dashboard.vue')
     }
   ]
