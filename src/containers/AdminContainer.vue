@@ -1,34 +1,5 @@
 <template lang="pug">
-  .app
-    app-header(fixed)
-      sidebar-toggler.d-lg-none(:defaultOpen='first_toggle' display='md' mobile, @click.native="publish('nav-navbar-minimizer')")
-      b-link.navbar-brand(href='javascript:void(0)')
-        img.navbar-brand-full(src='../assets/img/logo.png', width='30', height='30', alt='Konseling')
-        img.navbar-brand-minimized(src='../assets/img/logo.png', width='30', height='30', alt='Konseling')
-      sidebar-toggler.navbar-minimizer.d-md-down-none(:defaultOpen='first_toggle' display='lg', @click.native="publish('nav-navbar-minimizer')")
-      b-navbar-nav.ml-auto
-        b-nav-item.d-md-down-none(href='javascript:void(0)' @click="publish('mp-toggle-window')")
-          i.fas.fa-music
-        b-nav-item.d-md-down-none(href='javascript:void(0)')
-          i.fas.fa-power-off
-    .app-body
-      app-sidebar(fixed)
-        sidebar-header
-        sidebar-form
-        sidebar-nav(:navItems='nav')
-        sidebar-footer
-        sidebar-minimizer(@click.native="publish('nav-sidebar-minimizer')")
-      main.main
-        breadcrumb(:list='list')
-        .container-fluid
-          slot
-    the-footer
-      div
-        a(href='https://coreui.io') CoreUI
-        span.ml-1 &copy; 2018 creativeLabs.
-      .ml-auto
-        span.mr-1 Powered by
-        a(href='https://coreui.io') CoreUI for Vue
+  include ../partials/default-admin-partial.pug
 </template>
 
 <script>
