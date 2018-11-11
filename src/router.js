@@ -36,6 +36,24 @@ export default new Router({
       name: 'profile',
       meta: { layout: 'admin-container-no-aside' },
       component: () => import('./views/Profile.vue')
+    },
+    {
+      path: '/course/start/:id',
+      name: 'course-start',
+      meta: { layout: 'admin-container-no-aside' },
+      component: () => import('./views/course/Start.vue')
+    },
+    {
+      path: '/course/result',
+      name: 'course-result',
+      meta: { layout: 'admin-container-no-aside' },
+      component: () => import('./views/course/Result.vue')
+    },
+    {
+      path: '/course/result/:id/detail',
+      name: 'course-result-detail',
+      meta: { layout: 'admin-container-no-aside' },
+      component: () => import('./views/course/Detail.vue')
     }
   ]
 })
