@@ -54,6 +54,12 @@ export default new Router({
       name: 'course-result-detail',
       meta: { layout: 'admin-container-no-aside' },
       component: () => import('./views/course/Detail.vue')
+    },
+    {
+      path: '*',
+      name: 'error-404',
+      meta: { layout: 'plain-container' },
+      component: () => import('./views/errors/404.vue')
     }
   ]
 })
