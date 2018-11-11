@@ -1,10 +1,7 @@
 <template lang="pug">
   .music-player
-    #musicPlayerModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='musicPlayerModalLabel', aria-hidden='false')
-      .modal-dialog(role='document')
-        .modal-content
-          .modal-body
-            aplayer(:music='songs[0]', :list='songs', repeat='repeat-all', ref='player')
+    b-modal(ref='musicPlayerModal', hide-footer='', hide-header='')
+      aplayer(:music='songs[0]', :list='songs', repeat='repeat-all', ref='player')
 </template>
 
 <script>
@@ -21,7 +18,7 @@ export default {
   },
   methods: {
     toggleMusic () {
-      window.$('#musicPlayerModal').modal()
+      this.$refs.musicPlayerModal.show()
     },
     loadMusic (vm) {
       let currentIndex = vm.$cookies.get('audio_current_index')
@@ -63,7 +60,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.modal-body {
+.music-player /deep/ .modal-body {
   padding: 2px;
 }
 </style>
