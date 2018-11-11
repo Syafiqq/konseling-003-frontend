@@ -21,6 +21,7 @@
       main.main
         breadcrumb(:list='list')
         .container-fluid
+          slot
     the-footer
       div
         a(href='https://coreui.io') CoreUI
