@@ -30,6 +30,12 @@ export default new Router({
       name: 'home',
       meta: { layout: 'admin-container-no-aside' },
       component: () => import('./views/Dashboard.vue')
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      meta: { layout: 'admin-container-no-aside' },
+      component: () => import('./views/Profile.vue')
     }
   ]
 })
