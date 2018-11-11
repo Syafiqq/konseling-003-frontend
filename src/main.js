@@ -9,6 +9,7 @@ import VueSweetalert2 from 'vue-sweetalert2'
 import VueCookies from 'vue-cookies'
 
 import PlainContainer from './containers/PlainContainer.vue'
+import AdminContainer from './containers/AdminContainer.vue'
 
 require('./resources/js/bootstrap.js')
 
@@ -26,6 +27,7 @@ Vue.use(VueCookies)
 require('./resources/js/vue-nav-toggle-recorder')
 
 Vue.component('plain-container', PlainContainer)
+Vue.component('admin-container', AdminContainer)
 
 new Vue({
   router,
