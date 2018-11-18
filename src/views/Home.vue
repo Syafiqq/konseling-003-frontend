@@ -8,7 +8,7 @@
 // @ is an alias to /src
 import fab from 'vue-fab'
 import LandingPage from '@/components/LandingPage.vue'
-import EventBus from '../event-bus'
+import EventBus from '../scripts/utils/event-bus'
 
 export default {
   name: 'home',

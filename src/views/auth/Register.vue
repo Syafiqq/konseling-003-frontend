@@ -7,7 +7,7 @@
 <script>
 import RegisterPage from '../../components/auth/RegisterPage.vue'
 import fab from 'vue-fab'
-import EventBus from '../../event-bus'
+import EventBus from '../../scripts/utils/event-bus'
 
 export default {
   name: 'Register',

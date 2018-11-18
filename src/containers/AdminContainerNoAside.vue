@@ -29,8 +29,8 @@ import {
   SidebarNav,
   SidebarToggler
 } from '@coreui/vue'
-import nav from '../nav'
-import EventBus from '../event-bus'
+import nav from '../scripts/utils/nav'
+import EventBus from '../scripts/utils/event-bus'
 
 export default {
   name: 'AdminContainer',

@@ -7,7 +7,7 @@
 <script>
 import fab from 'vue-fab'
 import Page404 from '../../components/errors/Page404'
-import EventBus from '../../event-bus'
+import EventBus from '../../scripts/utils/event-bus'
 
 export default {
   name: 'e-404',

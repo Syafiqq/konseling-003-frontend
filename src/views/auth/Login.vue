@@ -7,7 +7,7 @@
 <script>
 import LoginPage from '../../components/auth/LoginPage.vue'
 import fab from 'vue-fab'
-import EventBus from '../../event-bus'
+import EventBus from '../../scripts/utils/event-bus'
 
 export default {
   name: 'Login',

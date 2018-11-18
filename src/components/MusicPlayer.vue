@@ -6,8 +6,8 @@
 
 <script>
 import aplayer from 'vue-aplayer'
-import EventBus from '../event-bus'
-import * as Tracks from '../music-tracks'
+import EventBus from '../scripts/utils/event-bus'
+import * as Tracks from '../scripts/utils/music-tracks'
 
 export default {
   name: 'MusicPlayer',
