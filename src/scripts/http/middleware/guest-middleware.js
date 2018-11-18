@@ -1,7 +1,8 @@
 import PingService from '../../services/auth/ping-service'
 import store from '../../../store'
 
-export default async function (token = store.state.isLoggedIn) {
+export default async function (to, from, next) {
+  let token = store.state.isLoggedIn
   console.log(['token', token])
   let status = false
   if (token != null) {
@@ -16,5 +17,14 @@ export default async function (token = store.state.isLoggedIn) {
       status = true
     }
   }
-  return status
+
+  if (!status) {
+    next()
+  } else {
+    await store.dispatch('logout', {
+      callback: () => {
+        next(from ? from.path : '/')
+      }
+    })
+  }
 }
