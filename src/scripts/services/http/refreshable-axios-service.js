@@ -2,8 +2,10 @@ import axios from 'axios'
 import store from '../../../store'
 import interceptor from './refresh-token-interceptor-service'
 import axiosCommonConfig from './axios-common-config'
+import { loadProgressBar } from 'axios-progress-bar'
 
 const instance = axios.create()
+loadProgressBar({}, instance)
 axiosCommonConfig(instance)
 const { success, error } = interceptor
 const rAxios = {
