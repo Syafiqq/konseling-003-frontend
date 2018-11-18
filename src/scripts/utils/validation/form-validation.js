@@ -1,11 +1,19 @@
 export default function (base, keys, errors) {
-  window._.forEach(keys || {}, (value) => {
-    let formSel = window.$(`#${base}-${value}`)
-    if (value in errors) {
-      formSel.find('input').addClass('is-invalid')
-      formSel.find('div.invalid-feedback').text(Array.isArray(errors[value]) ? errors[value][0] : errors[value])
+  window._.forEach(keys || {}, (value, key) => {
+    let formSel = window.$(`#${base}-${key}`)
+    if (key in errors) {
+      switch (value) {
+        case 'input' :
+          formSel.find('input').addClass('is-invalid')
+          break
+      }
+      formSel.find('div.invalid-feedback').text(Array.isArray(errors[key]) ? errors[key][0] : errors[key])
     } else {
-      formSel.find('input').removeClass('is-invalid')
+      switch (value) {
+        case 'input' :
+          formSel.find('input').removeClass('is-invalid')
+          break
+      }
     }
   })
 }

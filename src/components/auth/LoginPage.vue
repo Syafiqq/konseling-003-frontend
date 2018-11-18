@@ -8,16 +8,18 @@
               .card-body
                 h1 Login
                 p.text-muted Login untuk memulai aplikasi
-                .input-group.mb-3
+                #form-0-credential.input-group.mb-3
                   .input-group-prepend
                     span.input-group-text
                       i.icon-user
                   input.form-control(type='text', placeholder='NISN' v-model='auth.credential')
-                .input-group.mb-4
+                  .invalid-feedback
+                #form-0-password.input-group.mb-4
                   .input-group-prepend
                     span.input-group-text
                       i.icon-lock
                   input.form-control(type='password', placeholder='Password' v-model='auth.password')
+                  .invalid-feedback
                 .row
                   .col-6
                     button.btn.btn-primary.px-4(type='button', @click='doLogin') Login
@@ -41,7 +43,12 @@
 
 <script>
 import service from '../../scripts/services/auth/login-service'
+import validation from '../../scripts/utils/validation/form-validation'
 
+const form0keys = {
+  credential: 'input',
+  password: 'input'
+}
 export default {
   name: 'LoginPage',
   data () {
@@ -60,7 +67,9 @@ export default {
 
         },
         (failed) => {
-
+          if (failed?.response?.status === 422) {
+            validation('form-0', form0keys, failed?.response?.data?.data)
+          }
         },
         () => {
 
