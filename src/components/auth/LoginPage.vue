@@ -20,7 +20,7 @@
                   input.form-control(type='password', placeholder='Password' :value='auth.password')
                 .row
                   .col-6
-                    button.btn.btn-primary.px-4(type='button') Login
+                    button.btn.btn-primary.px-4(type='button', @click='doLogin') Login
                   .col-6.text-right.d-none.d-sm-none.d-md-none.d-lg-block.d-xl-block
                     button.btn.btn-link.px-0(type='button') Lupa password?
                   .col-6.text-right.d-block.d-sm-block.d-md-block.d-lg-none.d-xl-none
@@ -48,6 +48,11 @@ export default {
         credential: '',
         password: ''
       }
+    }
+  },
+  methods: {
+    doLogin () {
+      console.log({ ...this.auth })
     }
   }
 }
