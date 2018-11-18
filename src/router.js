@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import guestMiddleware from './scripts/http/middleware/guest-middleware'
 
 Vue.use(Router)
 
@@ -11,19 +12,22 @@ export default new Router({
       path: '/',
       name: 'root',
       meta: { layout: 'plain-container' },
-      component: require('./views/Home.vue').default
+      component: require('./views/Home.vue').default,
+      beforeEnter: guestMiddleware
     },
     {
       path: '/auth/login',
       name: 'auth-login',
       meta: { layout: 'plain-container' },
-      component: () => import('./views/auth/Login.vue')
+      component: () => import('./views/auth/Login.vue'),
+      beforeEnter: guestMiddleware
     },
     {
       path: '/auth/register',
       name: 'auth-register',
       meta: { layout: 'plain-container' },
-      component: () => import('./views/auth/Register.vue')
+      component: () => import('./views/auth/Register.vue'),
+      beforeEnter: guestMiddleware
     },
     {
       path: '/home',
