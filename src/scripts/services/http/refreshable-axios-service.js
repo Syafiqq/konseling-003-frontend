@@ -1,4 +1,4 @@
-import axios from 'common-axios'
+import axios from './common-axios'
 import store from '../../../store'
 import interceptor from './refresh-token-interceptor-service'
 

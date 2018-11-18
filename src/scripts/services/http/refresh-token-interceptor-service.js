@@ -1,5 +1,5 @@
 import RefreshService from '../../services/auth/refresh-service'
-import axios from 'common-axios'
+import axios from './common-axios'
 import store from '../../../store'
 
 /**
