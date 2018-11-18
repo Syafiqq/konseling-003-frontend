@@ -1,41 +1,40 @@
 <template lang="pug">
   .main-wrapper
-    .section.right.col-xs-9
-      h1 Page Not Found
-      p Sorry, but the page you were trying to view does not exist.
+    Page404
+    fab(:actions='fabActions', main-icon='radio_button_checked', @music="music")
 </template>
 
 <script>
+import fab from 'vue-fab'
+import Page404 from '../../components/errors/Page404'
+import EventBus from '../../event-bus'
+
 export default {
-  name: 'e-404'
+  name: 'e-404',
+  components: {
+    fab,
+    Page404
+  },
+  data () {
+    return {
+      fabActions: [
+        {
+          name: 'music',
+          icon: 'music_note'
+        }
+      ]
+    }
+  },
+  methods: {
+    music () {
+      EventBus.$emit('mp-toggle-window')
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.left {
-}
-
-.right {
-}
-
 .main-wrapper {
   height: 100vh;
-}
-
-.section {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: #888;
-  font-family: sans-serif;
-}
-
-.half {
-  background: #f9f9f9;
-  height: 50%;
-  width: 100%;
-  margin: 15px 0;
 }
 </style>
