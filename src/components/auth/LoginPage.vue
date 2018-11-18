@@ -44,6 +44,7 @@
 <script>
 import service from '../../scripts/services/auth/login-service'
 import validation from '../../scripts/utils/validation/form-validation'
+import alert from '../../scripts/utils/alert/common-alerts'
 
 const form0keys = {
   credential: 'input',
@@ -67,8 +68,9 @@ export default {
 
         },
         (failed) => {
+          alert(failed?.response?.data?.alert || [])
           if (failed?.response?.status === 422) {
-            validation('form-0', form0keys, failed?.response?.data?.data)
+            validation('form-0', form0keys, failed?.response?.data?.data || {})
           }
         },
         () => {

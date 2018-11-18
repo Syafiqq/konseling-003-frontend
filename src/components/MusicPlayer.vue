@@ -31,7 +31,7 @@ export default {
           this.$swal({
             toast: true,
             position: 'bottom',
-            title: 'Do you want to play the music ?',
+            title: 'Apakah anda ingin mendengarkan musik ?',
             confirmButtonText: 'Yes',
             showCancelButton: true,
             cancelButtonText: 'No'
