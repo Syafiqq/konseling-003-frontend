@@ -1,0 +1,11 @@
+@import '~axios-progress-bar/dist/nprogress.css';
+
+#nprogress .bar {
+  background: $pace-base-color;
+  height: $pace-size;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: $primary !important;
+  border-left-color: $primary !important;
+}
