@@ -13,7 +13,6 @@ export default new Router({
       name: 'root',
       meta: { layout: 'plain-container' },
       component: require('./views/Home.vue').default,
-      beforeEnter: guestMiddleware
     },
     {
       path: '/auth/login',
