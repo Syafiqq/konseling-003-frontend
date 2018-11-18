@@ -3,7 +3,7 @@ import store from '../../../store'
 
 export default async function (to, from, next) {
   let token = store.state.isLoggedIn
-  console.log(['token', token])
+  console.log({ token: token, to: to, from: from })
   let status = false
   if (token != null) {
     let response = null
@@ -12,7 +12,7 @@ export default async function (to, from, next) {
     } catch (e) {
       response = e.response
     }
-    console.log('response', response)
+    console.log({ response: response })
     if (response != null && response.status === 200) {
       status = true
     }

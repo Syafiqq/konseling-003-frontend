@@ -12,7 +12,7 @@ export default new Router({
       path: '/',
       name: 'root',
       meta: { layout: 'plain-container' },
-      component: require('./views/Home.vue').default,
+      component: require('./views/Home.vue').default
     },
     {
       path: '/auth/login',
