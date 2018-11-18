@@ -1,8 +1,10 @@
-import axios from './common-axios'
+import axios from 'axios'
 import store from '../../../store'
 import interceptor from './refresh-token-interceptor-service'
+import axiosCommonConfig from './axios-common-config'
 
 const instance = axios.create()
+axiosCommonConfig(instance)
 const { success, error } = interceptor
 const rAxios = {
   interceptor: instance.interceptors.response.use(success, error),
