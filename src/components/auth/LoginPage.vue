@@ -12,12 +12,12 @@
                   .input-group-prepend
                     span.input-group-text
                       i.icon-user
-                  input.form-control(type='text', placeholder='NISN' :value='auth.credential')
+                  input.form-control(type='text', placeholder='NISN' v-model='auth.credential')
                 .input-group.mb-4
                   .input-group-prepend
                     span.input-group-text
                       i.icon-lock
-                  input.form-control(type='password', placeholder='Password' :value='auth.password')
+                  input.form-control(type='password', placeholder='Password' v-model='auth.password')
                 .row
                   .col-6
                     button.btn.btn-primary.px-4(type='button', @click='doLogin') Login
@@ -40,6 +40,8 @@
 </template>
 
 <script>
+import service from '../../scripts/services/auth/login-service'
+
 export default {
   name: 'LoginPage',
   data () {
@@ -53,6 +55,16 @@ export default {
   methods: {
     doLogin () {
       console.log({ ...this.auth })
+      service({ ...this.auth },
+        (success) => {
+
+        },
+        (failed) => {
+
+        },
+        () => {
+
+        })
     }
   }
 }
