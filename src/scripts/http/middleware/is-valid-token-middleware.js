@@ -12,12 +12,8 @@ export default async function (token = store.state.isLoggedIn) {
       response = e.response
     }
     console.log('response', response)
-    if (response != null) {
-      if (response.status === 200) {
-        status = true
-      } else {
-        await store.dispatch('logout')
-      }
+    if (response != null && response.status === 200) {
+      status = true
     }
   }
   return status
