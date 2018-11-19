@@ -9,6 +9,8 @@ const LOGIN = 'LOGIN'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const LOGOUT = 'LOGOUT'
 const FLASH = 'FLASH'
+const FLASH_NOTIFY = 'FLASH_NOTIFY'
+const FLASH_ALERT = 'FLASH_ALERT'
 
 export default new Vuex.Store({
   state: {
@@ -34,6 +36,12 @@ export default new Vuex.Store({
     [FLASH] (state, data) {
       state.notify = data.notify
       state.alert = data.alert
+    },
+    [FLASH_NOTIFY] (state, notify) {
+      state.notify = notify
+    },
+    [FLASH_ALERT] (state, alert) {
+      state.alert = alert
     }
   },
   actions: {
