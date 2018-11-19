@@ -44,7 +44,7 @@
 <script>
 import service from '../../scripts/services/auth/login-service'
 import validation from '../../scripts/utils/validation/form-validation'
-import alert from '../../scripts/utils/alert/common-alerts'
+import alert from '../../scripts/utils/alert/common-alert'
 
 const form0keys = {
   credential: 'input',
