@@ -8,10 +8,13 @@ Vue.use(Vuex)
 const LOGIN = 'LOGIN'
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 const LOGOUT = 'LOGOUT'
+const FLASH = 'FLASH'
 
 export default new Vuex.Store({
   state: {
-    isLoggedIn: localStorage.getItem('token')
+    isLoggedIn: localStorage.getItem('token'),
+    alert: [],
+    notify: []
   },
   mutations: {
     [LOGIN] (state) {
@@ -27,6 +30,10 @@ export default new Vuex.Store({
       axios.refresh(null)
 
       state.isLoggedIn = null
+    },
+    [FLASH] (state, notify, alert) {
+      state.notify = notify
+      state.alert = alert
     }
   },
   actions: {
