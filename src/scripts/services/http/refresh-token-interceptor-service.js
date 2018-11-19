@@ -9,24 +9,20 @@ import store from '../../../store'
  */
 
 let isAlreadyFetchingAccessToken = false
-let success = []
-let failed = []
+let subscriber = []
 
-function onAccessTokenFetched (accessToken) {
-  success.filter(callback => callback(accessToken))
-  success = []
-  failed = []
+function onAccessTokenFetched (token) {
+  subscriber.filter(callback => callback(token, null))
+  subscriber = []
 }
 
 function onRefreshFailed (cause) {
-  failed.filter(callback => callback(cause))
-  failed = []
-  success = []
+  subscriber.filter(callback => callback(null, cause))
+  subscriber = []
 }
 
-function addSubscriber (sCallback, fCallback) {
-  success.push(sCallback)
-  failed.push(fCallback)
+function addSubscriber (callback) {
+  subscriber.push(callback)
 }
 
 const interceptor = {
@@ -36,20 +32,22 @@ const interceptor = {
     const originalRequest = config
     if (response.status === 401 && 'data' in response.data && response.data.status === 'Token has expired') {
       const retryOriginalRequest = new Promise((resolve, reject) => {
-        addSubscriber(accessToken => {
-          originalRequest.headers.Authorization = 'Bearer ' + accessToken
-          resolve(axios(originalRequest))
-        }, cause => {
-          reject(cause)
+        addSubscriber((token, cause) => {
+          if (token) {
+            originalRequest.headers.Authorization = 'Bearer ' + token
+            resolve(axios(originalRequest))
+          } else {
+            reject(cause)
+          }
         })
       })
 
       if (!isAlreadyFetchingAccessToken) {
         isAlreadyFetchingAccessToken = true
 
-        await RefreshService((rRes) => {
-          if (rRes != null && rRes.status === 200 && 'config' in rRes && 'headers' in rRes && 'authorization' in rRes.headers) {
-            const nTk = rRes.headers.authorization.substr(7, rRes.headers.authorization.length - 7)
+        await RefreshService((response) => {
+          if (response != null && response.status === 200 && 'config' in response && 'headers' in response && 'authorization' in response.headers) {
+            const nTk = response.headers.authorization.substr(7, response.headers.authorization.length - 7)
             store.dispatch('login', {
               token: nTk
             }).then(() => {
@@ -58,11 +56,11 @@ const interceptor = {
             })
           } else {
             isAlreadyFetchingAccessToken = false
-            onRefreshFailed(rRes)
+            onRefreshFailed(response)
           }
-        }, (rFailed) => {
+        }, (failed) => {
           isAlreadyFetchingAccessToken = false
-          onRefreshFailed(rFailed)
+          onRefreshFailed(failed)
         })
       }
       return retryOriginalRequest
