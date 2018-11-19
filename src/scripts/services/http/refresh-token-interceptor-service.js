@@ -51,16 +51,15 @@ const interceptor = {
             store.dispatch('login', {
               token: nTk
             }).then(() => {
-              isAlreadyFetchingAccessToken = false
               onAccessTokenFetched(nTk)
             })
           } else {
-            isAlreadyFetchingAccessToken = false
             onRefreshFailed(response)
           }
         }, (failed) => {
-          isAlreadyFetchingAccessToken = false
           onRefreshFailed(failed)
+        }, () => {
+          isAlreadyFetchingAccessToken = false
         })
       }
       return retryOriginalRequest
