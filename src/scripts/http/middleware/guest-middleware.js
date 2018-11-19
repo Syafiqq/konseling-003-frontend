@@ -7,24 +7,24 @@ export default async function (to, from, next) {
   let status = false
   if (token != null) {
     let response = null
-    try {
-      response = await PingService()
-    } catch (e) {
-      response = e.response
-    }
-    console.log({ response: response })
+    await PingService(
+      (success) => {
+        response = success
+      },
+      (failed) => {
+        response = failed.response
+      }
+    )
     if (response != null && response.status === 200) {
       status = true
+    } else {
+      await store.dispatch('logout', { callback: null })
     }
   }
 
   if (!status) {
     next()
   } else {
-    await store.dispatch('logout', {
-      callback: () => {
-        next(from ? from.path : '/')
-      }
-    })
+    next(from ? from.path : '/')
   }
 }
