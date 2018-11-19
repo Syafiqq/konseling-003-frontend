@@ -10,6 +10,7 @@ export default function (credentials, success, failed, always) {
         success(response)
       }
       if (response.status === 200) {
+        store.commit('FLASH', { notify: response?.data?.notify, alert: response?.data?.alert })
         store.dispatch('login', {
           token: response.data.data.token
         }).then(() => {
