@@ -31,9 +31,9 @@ export default new Vuex.Store({
 
       state.isLoggedIn = null
     },
-    [FLASH] (state, notify, alert) {
-      state.notify = notify
-      state.alert = alert
+    [FLASH] (state, data) {
+      state.notify = data.notify
+      state.alert = data.alert
     }
   },
   actions: {
