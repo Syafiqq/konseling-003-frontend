@@ -40,7 +40,7 @@ export default new Vuex.Store({
         resolve()
       })
     },
-    logout ({ commit }, callback = () => router.push('/')) {
+    logout ({ commit }, callback = () => router.push('/auth/login')) {
       return new Promise(resolve => {
         commit(LOGOUT)
         resolve()
