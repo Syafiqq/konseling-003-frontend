@@ -15,14 +15,12 @@ export default new Vuex.Store({
   },
   mutations: {
     [LOGIN] (state) {
-      state.pending = true
     },
     [LOGIN_SUCCESS] (state, token) {
       localStorage.setItem('token', token)
       axios.refresh(token)
 
       state.isLoggedIn = token
-      state.pending = false
     },
     [LOGOUT] (state) {
       localStorage.removeItem('token')
