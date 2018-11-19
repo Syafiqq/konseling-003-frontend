@@ -9,14 +9,24 @@ import store from '../../../store'
  */
 
 let isAlreadyFetchingAccessToken = false
-let subscribers = []
+let success = []
+let failed = []
 
 function onAccessTokenFetched (accessToken) {
-  subscribers = subscribers.filter(callback => callback(accessToken))
+  success.filter(callback => callback(accessToken))
+  success = []
+  failed = []
 }
 
-function addSubscriber (callback) {
-  subscribers.push(callback)
+function onRefreshFailed (cause) {
+  failed.filter(callback => callback(cause))
+  failed = []
+  success = []
+}
+
+function addSubscriber (sCallback, fCallback) {
+  success.push(sCallback)
+  failed.push(fCallback)
 }
 
 const interceptor = {
@@ -25,10 +35,12 @@ const interceptor = {
     const { config, response } = failed
     const originalRequest = config
     if (response.status === 401 && 'data' in response.data && response.data.status === 'Token has expired') {
-      const retryOriginalRequest = new Promise((resolve) => {
+      const retryOriginalRequest = new Promise((resolve, reject) => {
         addSubscriber(accessToken => {
           originalRequest.headers.Authorization = 'Bearer ' + accessToken
           resolve(axios(originalRequest))
+        }, cause => {
+          reject(cause)
         })
       })
 
@@ -44,9 +56,13 @@ const interceptor = {
               isAlreadyFetchingAccessToken = false
               onAccessTokenFetched(nTk)
             })
+          } else {
+            isAlreadyFetchingAccessToken = false
+            onRefreshFailed(rRes)
           }
-        }, () => {
+        }, (rFailed) => {
           isAlreadyFetchingAccessToken = false
+          onRefreshFailed(rFailed)
         })
       }
       return retryOriginalRequest
