@@ -72,7 +72,9 @@ export default {
       this.disabled = true
       service({ ...this.auth },
         (success) => {
-
+          if (success.status === 200) {
+            this.$store.commit('FLASH', success?.data?.notify || [], success?.data?.alert || [])
+          }
         },
         (failed) => {
           alert(failed?.response?.data?.alert || [])
