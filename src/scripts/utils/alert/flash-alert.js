@@ -1,4 +1,4 @@
-import commonAlert from 'common-alert'
+import commonAlert from './common-alert'
 import store from '../../../store'
 
 export default function () {
