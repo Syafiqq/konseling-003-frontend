@@ -21,8 +21,8 @@ function addSubscriber (callback) {
 
 const interceptor = {
   success: (response) => response,
-  error: (error) => {
-    const { config, response } = error
+  error: async (failed) => {
+    const { config, response } = failed
     const originalRequest = config
     if (response.status === 401 && 'data' in response.data && response.data.status === 'Token has expired') {
       const retryOriginalRequest = new Promise((resolve) => {
@@ -35,9 +35,9 @@ const interceptor = {
       if (!isAlreadyFetchingAccessToken) {
         isAlreadyFetchingAccessToken = true
 
-        RefreshService((response) => {
-          if (response != null && response.status === 200 && 'config' in response && 'headers' in response && 'authorization' in response.headers) {
-            const nTk = response.headers.authorization.substr(7, response.headers.authorization.length - 7)
+        await RefreshService((rRes) => {
+          if (rRes != null && rRes.status === 200 && 'config' in rRes && 'headers' in rRes && 'authorization' in rRes.headers) {
+            const nTk = rRes.headers.authorization.substr(7, rRes.headers.authorization.length - 7)
             store.dispatch('login', {
               token: nTk
             }).then(() => {
@@ -51,7 +51,7 @@ const interceptor = {
       }
       return retryOriginalRequest
     }
-    return Promise.reject(error)
+    return Promise.reject(failed)
   }
 }
 
