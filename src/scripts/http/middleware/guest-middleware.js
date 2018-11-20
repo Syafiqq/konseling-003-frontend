@@ -25,6 +25,7 @@ export default async function (to, from, next) {
   if (!status) {
     next()
   } else {
+    store.commit('FLASH_ALERT', ['Anda Sudah Terauthentikasi'])
     next(from ? from.path : '/')
   }
 }
