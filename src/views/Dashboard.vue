@@ -7,15 +7,8 @@
 </template>
 
 <script>
-import flashAlert from '../scripts/utils/alert/flash-alert'
-
 export default {
-  name: 'Dashboard',
-  mounted: function () {
-    this.$nextTick(function () {
-      flashAlert()
-    })
-  }
+  name: 'Dashboard'
 }
 </script>
 
