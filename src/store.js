@@ -37,24 +37,30 @@ export default new Vuex.Store({
   },
   actions: {
     login ({ dispatch, commit }, credential) {
-      return new Promise(async resolve => {
-        await dispatch('create_token', credential.token)
+      return new Promise(resolve => {
+        dispatch('create_token', credential.token)
         resolve()
       })
     },
     logout ({ dispatch, commit }, callback = () => router.push('/auth/login')) {
-      return new Promise(async resolve => {
-        await dispatch('purge_token')
+      return new Promise(resolve => {
+        dispatch('purge_token')
         resolve()
       }).then(callback)
     },
-    async purge_token ({ commit }) {
-      await localStorage.removeItem('token')
-      commit(STORE_TOKEN, null)
+    purge_token ({ commit }) {
+      return new Promise(resolve => {
+        localStorage.removeItem('token')
+        commit(STORE_TOKEN, null)
+        resolve()
+      })
     },
-    async create_token ({ commit }, token) {
-      await localStorage.setItem('token', token)
-      commit(STORE_TOKEN, token)
+    create_token ({ commit }, token) {
+      return new Promise(resolve => {
+        localStorage.setItem('token', token)
+        commit(STORE_TOKEN, token)
+        resolve()
+      })
     }
   }
 })
