@@ -21,9 +21,9 @@ export default new Vuex.Store({
     [STORE_TOKEN] (state, token) {
       state.token = token
     },
-    [FLASH] (state, data) {
-      state.notify = data.notify
-      state.alert = data.alert
+    [FLASH] (state, { notify, alert }) {
+      state.notify = notify
+      state.alert = alert
     },
     [FLASH_NOTIFY] (state, notify) {
       state.notify = notify
