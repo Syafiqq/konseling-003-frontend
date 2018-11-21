@@ -24,20 +24,16 @@ export default {
       return (this.$route.meta.layout || defaultLayout)
     }
   },
-  mounted: function () {
-    this.$nextTick(function () {
-      flashAlert()
-    })
-  },
 
   created () {
     // nothing defined here (when this.$route.path is other than "/")
-    console.log({ route: this.$route, meta: this.$route.meta.layout })
+    // console.log({ route: this.$route, meta: this.$route.meta.layout })
   },
 
   updated () {
     // something defined here whatever the this.$route.path
-    console.log({ route: this.$route, meta: this.$route.meta.layout })
+    // console.log({ route: this.$route, meta: this.$route.meta.layout })
+    flashAlert()
   }
 }
 </script>
