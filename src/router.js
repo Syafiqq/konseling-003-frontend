@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import guestMiddleware from './scripts/http/middleware/guest-middleware'
+import authMiddleware from './scripts/http/middleware/authenticated-middleware'
 
 Vue.use(Router)
 
@@ -32,37 +33,43 @@ const router = new Router({
       path: '/home',
       name: 'home',
       meta: { layout: 'admin-container-no-aside' },
-      component: () => import('./views/Dashboard.vue')
+      component: () => import('./views/Dashboard.vue'),
+      beforeEnter: authMiddleware
     },
     {
       path: '/profile',
       name: 'profile',
       meta: { layout: 'admin-container-no-aside' },
-      component: () => import('./views/Profile.vue')
+      component: () => import('./views/Profile.vue'),
+      beforeEnter: authMiddleware
     },
     {
       path: '/course/start/:id',
       name: 'course-start',
       meta: { layout: 'admin-container-no-aside' },
-      component: () => import('./views/course/Start.vue')
+      component: () => import('./views/course/Start.vue'),
+      beforeEnter: authMiddleware
     },
     {
       path: '/course/result',
       name: 'course-result',
       meta: { layout: 'admin-container-no-aside' },
-      component: () => import('./views/course/Result.vue')
+      component: () => import('./views/course/Result.vue'),
+      beforeEnter: authMiddleware
     },
     {
       path: '/course/result/:id/detail',
       name: 'course-result-detail',
       meta: { layout: 'admin-container-no-aside' },
-      component: () => import('./views/course/Detail.vue')
+      component: () => import('./views/course/Detail.vue'),
+      beforeEnter: authMiddleware
     },
     {
       path: '*',
       name: 'error-404',
       meta: { layout: 'plain-container' },
-      component: () => import('./views/errors/404.vue')
+      component: () => import('./views/errors/404.vue'),
+      beforeEnter: authMiddleware
     }
   ]
 })
