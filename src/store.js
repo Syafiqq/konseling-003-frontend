@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import router from './router'
-import axios from './scripts/services/http/refreshable-axios-service'
 
 Vue.use(Vuex)
 
@@ -23,13 +22,11 @@ export default new Vuex.Store({
     },
     [LOGIN_SUCCESS] (state, token) {
       localStorage.setItem('token', token)
-      axios.refresh(token)
 
       state.isLoggedIn = token
     },
     [LOGOUT] (state) {
       localStorage.removeItem('token')
-      axios.refresh(null)
 
       state.isLoggedIn = null
     },
