@@ -13,8 +13,11 @@ const rAxios = {
   instance: instance,
   refresh: (token) => {
     instance.defaults.headers.post['Authorization'] = `Bearer ${token}`
+  },
+  instance1: () => {
+    rAxios.refresh(store.state.isLoggedIn)
+    return rAxios.instance
   }
 }
-rAxios.refresh(store.state.isLoggedIn)
 
 export default rAxios
