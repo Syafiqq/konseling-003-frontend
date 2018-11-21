@@ -8,8 +8,8 @@ const instance = axios.create()
 loadProgressBar({}, instance)
 axiosCommonConfig(instance)
 const { success, error } = interceptor
+instance.interceptors.response.use(success, error)
 const rAxios = {
-  interceptor: instance.interceptors.response.use(success, error),
   refresh: (token) => {
     instance.defaults.headers.post['Authorization'] = `Bearer ${token}`
   },
