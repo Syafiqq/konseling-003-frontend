@@ -20,13 +20,9 @@ export default new Vuex.Store({
   },
   mutations: {
     [CREATE_TOKEN] (state, token) {
-      localStorage.setItem('token', token)
-
       state.isLoggedIn = token
     },
     [PURGE_TOKEN] (state) {
-      localStorage.removeItem('token')
-
       state.isLoggedIn = null
     },
     [FLASH] (state, data) {
@@ -44,18 +40,25 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    login ({ state, commit, rootState }, credential) {
-      console.log({ state: state, commit: commit, rootState: rootState, credential: credential })
-      return new Promise(resolve => {
-        commit(CREATE_TOKEN, credential.token)
+    login ({ dispatch, commit }, credential) {
+      return new Promise(async resolve => {
+        await dispatch('create_token', credential.token)
         resolve()
       })
     },
-    logout ({ commit }, callback = () => router.push('/auth/login')) {
-      return new Promise(resolve => {
-        commit(PURGE_TOKEN)
+    logout ({ dispatch, commit }, callback = () => router.push('/auth/login')) {
+      return new Promise(async resolve => {
+        await dispatch('purge_token')
         resolve()
       }).then(callback)
+    },
+    async purge_token ({ commit }) {
+      await localStorage.removeItem('token')
+      commit(CREATE_TOKEN, null)
+    },
+    async create_token ({ commit }, token) {
+      await localStorage.setItem('token', token)
+      commit(CREATE_TOKEN, token)
     }
   }
 })
