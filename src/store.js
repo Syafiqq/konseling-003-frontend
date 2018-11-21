@@ -4,9 +4,8 @@ import router from './router'
 
 Vue.use(Vuex)
 
-const LOGIN = 'LOGIN'
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
-const LOGOUT = 'LOGOUT'
+const CREATE_TOKEN = 'CREATE_TOKEN'
+const PURGE_TOKEN = 'PURGE_TOKEN'
 const FLASH = 'FLASH'
 const FLASH_NOTIFY = 'FLASH_NOTIFY'
 const FLASH_ALERT = 'FLASH_ALERT'
@@ -20,14 +19,12 @@ export default new Vuex.Store({
     notify: []
   },
   mutations: {
-    [LOGIN] (state) {
-    },
-    [LOGIN_SUCCESS] (state, token) {
+    [CREATE_TOKEN] (state, token) {
       localStorage.setItem('token', token)
 
       state.isLoggedIn = token
     },
-    [LOGOUT] (state) {
+    [PURGE_TOKEN] (state) {
       localStorage.removeItem('token')
 
       state.isLoggedIn = null
@@ -41,7 +38,7 @@ export default new Vuex.Store({
     },
     [FLASH_ALERT] (state, alert) {
       state.alert = alert
-    }
+    },
     [REFLASH_ALERT] (state, alert) {
       state.reflashAlert = alert
     }
@@ -49,15 +46,14 @@ export default new Vuex.Store({
   actions: {
     login ({ state, commit, rootState }, credential) {
       console.log({ state: state, commit: commit, rootState: rootState, credential: credential })
-      commit(LOGIN)
       return new Promise(resolve => {
-        commit(LOGIN_SUCCESS, credential.token)
+        commit(CREATE_TOKEN, credential.token)
         resolve()
       })
     },
     logout ({ commit }, callback = () => router.push('/auth/login')) {
       return new Promise(resolve => {
-        commit(LOGOUT)
+        commit(PURGE_TOKEN)
         resolve()
       }).then(callback)
     }
