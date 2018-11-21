@@ -4,8 +4,7 @@ import router from './router'
 
 Vue.use(Vuex)
 
-const CREATE_TOKEN = 'CREATE_TOKEN'
-const PURGE_TOKEN = 'PURGE_TOKEN'
+const STORE_TOKEN = 'STORE_TOKEN'
 const FLASH = 'FLASH'
 const FLASH_NOTIFY = 'FLASH_NOTIFY'
 const FLASH_ALERT = 'FLASH_ALERT'
@@ -13,17 +12,14 @@ const REFLASH_ALERT = 'REFLASH_ALERT'
 
 export default new Vuex.Store({
   state: {
-    isLoggedIn: localStorage.getItem('token'),
+    token: localStorage.getItem('token'),
     alert: [],
     reflashAlert: false,
     notify: []
   },
   mutations: {
-    [CREATE_TOKEN] (state, token) {
-      state.isLoggedIn = token
-    },
-    [PURGE_TOKEN] (state) {
-      state.isLoggedIn = null
+    [STORE_TOKEN] (state, token) {
+      state.token = token
     },
     [FLASH] (state, data) {
       state.notify = data.notify
@@ -54,11 +50,11 @@ export default new Vuex.Store({
     },
     async purge_token ({ commit }) {
       await localStorage.removeItem('token')
-      commit(CREATE_TOKEN, null)
+      commit(STORE_TOKEN, null)
     },
     async create_token ({ commit }, token) {
       await localStorage.setItem('token', token)
-      commit(CREATE_TOKEN, token)
+      commit(STORE_TOKEN, token)
     }
   }
 })
