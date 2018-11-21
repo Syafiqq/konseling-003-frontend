@@ -1,8 +1,10 @@
 import commonAlert from './common-alert'
 import store from '../../../store'
 
-export default function () {
+export default function (reflash = false) {
   let alerts = store.state.alert
   commonAlert(alerts || [])
-  store.commit('FLASH_ALERT', [])
+  if (!reflash) {
+    store.commit('FLASH_ALERT', [])
+  }
 }
