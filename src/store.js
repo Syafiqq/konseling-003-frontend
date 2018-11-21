@@ -10,11 +10,13 @@ const LOGOUT = 'LOGOUT'
 const FLASH = 'FLASH'
 const FLASH_NOTIFY = 'FLASH_NOTIFY'
 const FLASH_ALERT = 'FLASH_ALERT'
+const REFLASH_ALERT = 'REFLASH_ALERT'
 
 export default new Vuex.Store({
   state: {
     isLoggedIn: localStorage.getItem('token'),
     alert: [],
+    reflashAlert: false,
     notify: []
   },
   mutations: {
@@ -39,6 +41,9 @@ export default new Vuex.Store({
     },
     [FLASH_ALERT] (state, alert) {
       state.alert = alert
+    }
+    [REFLASH_ALERT] (state, alert) {
+      state.reflashAlert = alert
     }
   },
   actions: {
