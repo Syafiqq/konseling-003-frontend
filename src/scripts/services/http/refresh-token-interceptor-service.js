@@ -48,9 +48,7 @@ const interceptor = {
         await RefreshService((response) => {
           if (response != null && response.status === 200 && 'config' in response && 'headers' in response && 'authorization' in response.headers) {
             const nTk = response.headers.authorization.substr(7, response.headers.authorization.length - 7)
-            store.dispatch('login', {
-              token: nTk
-            }).then(() => {
+            store.dispatch('create_token', nTk).then(() => {
               onAccessTokenFetched(nTk)
             })
           } else {
