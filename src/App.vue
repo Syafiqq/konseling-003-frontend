@@ -9,6 +9,7 @@
 <script>
 // @ is an alias to /src
 import MusicPlayer from './components/MusicPlayer.vue'
+import flashAlert from './scripts/utils/alert/flash-alert'
 
 const defaultLayout = 'plain-container'
 
@@ -22,6 +23,11 @@ export default {
     layout () {
       return (this.$route.meta.layout || defaultLayout)
     }
+  },
+  mounted: function () {
+    this.$nextTick(function () {
+      flashAlert()
+    })
   },
 
   created () {
