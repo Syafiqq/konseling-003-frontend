@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import router from './router'
 
 Vue.use(Vuex)
 
@@ -36,17 +35,17 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    login ({ dispatch, commit }, credential) {
+    login ({ dispatch }, credential) {
       return new Promise(resolve => {
         dispatch('create_token', credential.token)
         resolve()
       })
     },
-    logout ({ dispatch, commit }, callback = () => router.push('/auth/login')) {
+    logout ({ dispatch }) {
       return new Promise(resolve => {
         dispatch('purge_token')
         resolve()
-      }).then(callback)
+      })
     },
     purge_token ({ commit }) {
       return new Promise(resolve => {
