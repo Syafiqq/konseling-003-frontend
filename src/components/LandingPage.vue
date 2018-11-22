@@ -4,7 +4,7 @@
       .container
         a.navbar-brand(href='javascript:void(0)') Start Bootstrap
         router-link.btn.btn-primary(:to="{ name: 'auth-login'}", href='javascript:void(0)', v-if='!isLoggedIn') Sign In
-        router-link.btn.btn-primary(:to="{ name: 'auth-login'}", href='javascript:void(0)', v-if='isLoggedIn') Sign Out
+        button.btn.btn-primary(@click='doLogout' :disabled='isDisabled', v-if='isLoggedIn') Sign Out
     header.masthead.text-white.text-center
       .overlay
       .container
@@ -125,17 +125,36 @@
 </template>
 
 <script>
+import service from '../scripts/services/auth/logout-service'
+
 export default {
   name: 'LandingPage',
   data () {
-    return {}
+    return {
+      disabled: false
+    }
   },
   computed: {
     isLoggedIn () {
       return this.$store.state.token != null
+    },
+    isDisabled () {
+      return this.disabled
     }
   },
-  methods: {},
+  methods: {
+    doLogout () {
+      this.disabled = true
+      service(
+        () => {
+        },
+        () => {
+        },
+        () => {
+          this.disabled = false
+        })
+    }
+  },
   components: {}
 }
 </script>
