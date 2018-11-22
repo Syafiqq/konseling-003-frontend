@@ -15,6 +15,6 @@ export default async function (to, from, next) {
     } else {
       store.commit('FLASH_ALERT', alert)
     }
-    next(from ? from.path : '/')
+    next({ path: '/auth/login', replace: true })
   }
 }

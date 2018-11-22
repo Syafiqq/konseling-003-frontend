@@ -14,6 +14,6 @@ export default async function (to, from, next) {
     } else {
       store.commit('FLASH_ALERT', alert)
     }
-    next(from ? from.path : '/auth/login')
+    next(from && from.path === '/' ? '/' : false)
   }
 }
