@@ -8,13 +8,16 @@ const FLASH = 'FLASH'
 const FLASH_NOTIFY = 'FLASH_NOTIFY'
 const FLASH_ALERT = 'FLASH_ALERT'
 const REFLASH_ALERT = 'REFLASH_ALERT'
+const PUSH_AUTH_DATA_PASSING = 'PUSH_AUTH_DATA_PASSING'
+const PURGE_AUTH_DATA_PASSING = 'PURGE_AUTH_DATA_PASSING'
 
 export default new Vuex.Store({
   state: {
     token: localStorage.getItem('token'),
     alert: [],
     reflashAlert: false,
-    notify: []
+    notify: [],
+    authDataPassing: {}
   },
   mutations: {
     [STORE_TOKEN] (state, token) {
@@ -32,6 +35,12 @@ export default new Vuex.Store({
     },
     [REFLASH_ALERT] (state, alert) {
       state.reflashAlert = alert
+    },
+    [PUSH_AUTH_DATA_PASSING] (state, data) {
+      state.authDataPassing = data
+    },
+    [PURGE_AUTH_DATA_PASSING] (state) {
+      state.authDataPassing = {}
     }
   },
   actions: {
@@ -59,6 +68,13 @@ export default new Vuex.Store({
         localStorage.setItem('token', token)
         commit(STORE_TOKEN, token)
         resolve()
+      })
+    },
+    pop_auth_data_passing ({ commit, state }) {
+      return new Promise(resolve => {
+        let data = state.authDataPassing
+        commit(PURGE_AUTH_DATA_PASSING)
+        resolve(data)
       })
     }
   }
