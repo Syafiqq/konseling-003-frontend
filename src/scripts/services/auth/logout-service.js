@@ -23,7 +23,13 @@ export default function (success, failed, always) {
     })
     .catch((rFailed) => {
       commonAlert(rFailed.response?.data?.alert || [])
-      failed(rFailed)
+      if (failed != null) {
+        failed(rFailed)
+      }
     })
-    .then(always)
+    .then(() => {
+      if (always != null) {
+        always()
+      }
+    })
 }
