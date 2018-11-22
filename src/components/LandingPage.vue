@@ -3,20 +3,16 @@
     nav.navbar.navbar-light.bg-light.static-top
       .container
         a.navbar-brand(href='javascript:void(0)') Start Bootstrap
-        router-link.btn.btn-primary(:to="{ name: 'auth-login'}", href='javascript:void(0)') Sign In
+        router-link.btn.btn-primary(:to="{ name: 'auth-login'}", href='javascript:void(0)', v-if='!isLoggedIn') Sign In
+        router-link.btn.btn-primary(:to="{ name: 'auth-login'}", href='javascript:void(0)', v-if='isLoggedIn') Sign Out
     header.masthead.text-white.text-center
       .overlay
       .container
         .row
           .col-xl-9.mx-auto
             h1.mb-5 Build a landing page for your business or project and generate more leads!
-          .col-md-10.col-lg-8.col-xl-7.mx-auto
-            form
-              .form-row
-                .col-12.col-md-9.mb-2.mb-md-0
-                  input.form-control.form-control-lg(type='email', placeholder='Enter your email...')
-                .col-12.col-md-3
-                  button.btn.btn-block.btn-lg.btn-primary(type='submit') Sign up!
+          .col-md-10.col-lg-8.col-xl-7.mx-auto(v-if='!isLoggedIn')
+            router-link.btn.btn-block.btn-lg.btn-primary(:to="{ name: 'auth-login'}", href='javascript:void(0)', kind="button") Sign up!
     section.features-icons.bg-light.text-center
       .container
         .row
@@ -133,6 +129,11 @@ export default {
   name: 'LandingPage',
   data () {
     return {}
+  },
+  computed: {
+    isLoggedIn () {
+      return this.$store.state.token != null
+    }
   },
   methods: {},
   components: {}
