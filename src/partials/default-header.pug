@@ -7,5 +7,5 @@ app-header(fixed)
   b-navbar-nav.ml-auto
     b-nav-item(href='javascript:void(0)' @click="publish('mp-toggle-window')")
       i.fas.fa-music
-    b-nav-item(href='javascript:void(0)')
+    b-nav-item(@click='doLogout' :disabled='isDisabled', href='javascript:void(0)')
       i.fas.fa-power-off

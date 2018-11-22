@@ -31,6 +31,7 @@ import {
 } from '@coreui/vue'
 import nav from '../scripts/utils/nav'
 import EventBus from '../scripts/utils/event-bus'
+import service from '../scripts/services/auth/logout-service'
 
 export default {
   name: 'AdminContainer',
@@ -51,6 +52,7 @@ export default {
   data () {
     return {
       nav: nav.items,
+      disabled: false,
       first_toggle: this.$cookies.get('navbar-toggle') == null ? true : this.$cookies.get('navbar-toggle') === 'true'
     }
   },
@@ -60,11 +62,20 @@ export default {
     },
     list () {
       return this.$route.matched.filter((route) => route.name || route.meta.label)
+    },
+    isDisabled () {
+      return this.disabled
     }
   },
   methods: {
     publish (m) {
       EventBus.$emit(m)
+    },
+    doLogout () {
+      this.disabled = true
+      service(null, null, () => {
+        this.disabled = false
+      })
     }
   }
 }
