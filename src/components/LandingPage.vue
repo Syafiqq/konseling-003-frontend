@@ -145,14 +145,9 @@ export default {
   methods: {
     doLogout () {
       this.disabled = true
-      service(
-        () => {
-        },
-        () => {
-        },
-        () => {
-          this.disabled = false
-        })
+      service(null, null, () => {
+        this.disabled = false
+      })
     }
   },
   components: {}
