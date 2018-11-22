@@ -14,9 +14,9 @@
           .col-md-10.col-lg-8.col-xl-7.mx-auto(v-if='!isLoggedIn')
             .form-row
               .col-12.col-md-9.mb-2.mb-md-0
-                input.form-control.form-control-lg(type='email', placeholder='Tuliskan NISN Anda')
+                input.form-control.form-control-lg(type='email', placeholder='Tuliskan NISN Anda', v-model='authPass.credential')
               .col-12.col-md-3
-                router-link.btn.btn-block.btn-lg.btn-primary(:to="{ name: 'auth-register'}", href='javascript:void(0)', kind="button") Daftar!
+                button.btn.btn-block.btn-lg.btn-primary(@click="proceedRegister") Daftar!
     section.features-icons.bg-light.text-center
       .container
         .row
@@ -93,9 +93,9 @@
           .col-md-10.col-lg-8.col-xl-7.mx-auto(v-if='!isLoggedIn')
             .form-row
               .col-12.col-md-9.mb-2.mb-md-0
-                input.form-control.form-control-lg(type='email', placeholder='Tuliskan NISN Anda')
+                input.form-control.form-control-lg(type='email', placeholder='Tuliskan NISN Anda', v-model='authPass.credential')
               .col-12.col-md-3
-                router-link.btn.btn-block.btn-lg.btn-primary(:to="{ name: 'auth-register'}", href='javascript:void(0)', kind="button") Daftar!
+                button.btn.btn-block.btn-lg.btn-primary(@click="proceedRegister") Daftar!
     // Footer
     footer.footer.bg-light
       .container
@@ -134,7 +134,10 @@ export default {
   name: 'LandingPage',
   data () {
     return {
-      disabled: false
+      disabled: false,
+      authPass: {
+        credential: ''
+      }
     }
   },
   computed: {
@@ -151,6 +154,10 @@ export default {
       service(null, null, () => {
         this.disabled = false
       })
+    },
+    proceedRegister () {
+      this.$store.commit('PUSH_AUTH_DATA_PASSING', { ...this.authPass })
+      this.$router.push({ name: 'auth-register' })
     }
   },
   components: {}
