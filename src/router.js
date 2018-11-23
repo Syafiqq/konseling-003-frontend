@@ -30,6 +30,20 @@ const router = new Router({
       beforeEnter: guestMiddleware
     },
     {
+      path: '/auth/lost',
+      name: 'auth-lost',
+      meta: { layout: 'plain-container' },
+      component: () => import('./views/auth/Lost.vue'),
+      beforeEnter: guestMiddleware
+    },
+    {
+      path: '/auth/recover',
+      name: 'auth-recover',
+      meta: { layout: 'plain-container' },
+      component: () => import('./views/auth/Recover.vue'),
+      beforeEnter: guestMiddleware
+    },
+    {
       path: '/home',
       name: 'home',
       meta: { layout: 'admin-container-no-aside' },
