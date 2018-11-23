@@ -45,7 +45,10 @@ export default {
       service({ ...this.auth },
         (success) => {
           if (success.status === 200) {
-            this.$store.commit('PUSH_AUTH_DATA_PASSING', window._merge(success.data.data, { credential: this.credential }))
+            this.$store.commit('PUSH_AUTH_DATA_PASSING', {
+              token: success.data.data.recovery_token,
+              credential: this.credential
+            })
           }
         },
         (failed) => {
