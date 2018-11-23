@@ -31,7 +31,7 @@
                     i.icon-lock
                 input.form-control(type='password', placeholder='Ulangi Password', v-model='auth.password_confirmation')
                 .invalid-feedback
-              button.btn.btn-block.btn-success(type='button', @click='doRecover' :disabled='isDisabled') Daftar
+              button.btn.btn-block.btn-success(type='button', @click='doRecover' :disabled='isDisabled') Ubah Password
 </template>
 
 <script>
