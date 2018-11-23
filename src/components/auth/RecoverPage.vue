@@ -43,6 +43,7 @@ export default {
       disabled: false,
       auth: {
         'token': '',
+        'credential': '',
         'password': '12345678',
         'password_confirmation': '12345678'
       }
