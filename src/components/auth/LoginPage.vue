@@ -24,13 +24,13 @@
                   .col-6
                     button.btn.btn-primary.px-4(type='button', @click='doLogin' :disabled='isDisabled') Login
                   .col-6.text-right.d-none.d-sm-none.d-md-none.d-lg-block.d-xl-block
-                    button.btn.btn-link.px-0(type='button') Lupa password?
+                    router-link.btn.btn-link.px-0(:to="{name:'auth-lost'}", type='button', tag='button') Lupa Password ?
                   .col-6.text-right.d-block.d-sm-block.d-md-block.d-lg-none.d-xl-none
                     router-link.btn.btn-primary.px-4(:to="{name:'auth-register'}", tag='button', type='button')
                       | Daftar
                 .row.pt-3.d-block.d-sm-block.d-md-block.d-lg-none.d-xl-none
                   .col-12.center-text-align
-                    button.btn.btn-link.px-0(type='button') Lupa password?
+                    router-link.btn.btn-link.px-0(:to="{name:'auth-lost'}", type='button', tag='button') Lupa Password ?
             .card.text-white.bg-primary.py-5.d-none.d-sm-none.d-md-none.d-lg-block.d-xl-block(style='width:44%')
               .card-body.text-center
                 div
