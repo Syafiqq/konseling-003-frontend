@@ -51,7 +51,7 @@
                 .input-group-prepend
                   span.input-group-text
                     i.icon-lock
-                input.form-control(type='password', placeholder='Ulangi Password', v-model='auth.password_conf')
+                input.form-control(type='password', placeholder='Ulangi Password', v-model='auth.password_confirmation')
                 .invalid-feedback
               button.btn.btn-block.btn-success(type='button', @click='doRegister' :disabled='isDisabled') Daftar
 </template>
