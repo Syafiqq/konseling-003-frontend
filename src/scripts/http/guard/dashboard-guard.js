@@ -17,6 +17,7 @@ export default async function (to, from, next) {
     alert = rFailed?.response?.data?.alert || []
   })
   if (status) {
+    store.commit('FLASH_ALERT', alert)
     next(vm => vm.setData(data))
   } else {
     if (router.currentRoute?.path === from.path) {
