@@ -29,7 +29,7 @@ export default {
     return {
       disabled: false,
       auth: {
-        'credential': '10001'
+        'credential': ''
       }
     }
   },

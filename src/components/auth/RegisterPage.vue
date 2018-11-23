@@ -67,7 +67,7 @@ const form0keys = {
   gender: 'input',
   token: 'input',
   password: 'input',
-  password_conf: 'input'
+  password_confirmation: 'input'
 }
 export default {
   name: 'RegisterPage',
@@ -81,7 +81,7 @@ export default {
         gender: '',
         token: '',
         password: '',
-        password_conf: ''
+        password_confirmation: ''
       }
     }
   },

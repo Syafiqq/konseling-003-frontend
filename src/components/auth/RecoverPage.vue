@@ -52,8 +52,8 @@ export default {
       auth: {
         'credential': '',
         'token': '',
-        'password': '12345678',
-        'password_confirmation': '12345678'
+        'password': '',
+        'password_confirmation': ''
       }
     }
   },
