@@ -96,6 +96,12 @@ export default {
       this.disabled = true
       service({ ...this.auth },
         (success) => {
+          if (success.status === 200) {
+            this.$store.commit('PUSH_AUTH_DATA_PASSING', {
+              credential: this.auth.credential,
+              password: this.auth.password
+            })
+          }
         },
         (failed) => {
           if (failed?.response?.status === 422) {
