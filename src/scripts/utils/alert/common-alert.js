@@ -1,5 +1,7 @@
 export default function (errors) {
   window._.forEach(errors || [], (value) => {
-    window.toastr.info(value)
+    if (value.length > 0) {
+      window.toastr.info(value)
+    }
   })
 }
