@@ -7,8 +7,23 @@
 </template>
 
 <script>
+import guard from '../scripts/http/guard/dashboard-guard'
+
 export default {
-  name: 'Dashboard'
+  name: 'Dashboard',
+  data () {
+    return {
+      course_status: 2
+    }
+  },
+  methods: {
+    setData: (data) => {
+      this.course_status = data.course_status
+    }
+  },
+  async beforeRouteEnter (to, from, next) {
+    await guard(to, from, next)
+  },
 }
 </script>
 
