@@ -5,7 +5,7 @@ import router from '../../../router'
 
 export default function (credentials, success, failed, always) {
   return service.axios()
-    .post('/student/auth/recover', credentials)
+    .patch('/student/auth/recover', credentials)
     .then((response) => {
       if (success != null) {
         success(response)
