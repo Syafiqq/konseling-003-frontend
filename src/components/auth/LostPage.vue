@@ -21,7 +21,7 @@ import service from '../../scripts/services/auth/lost-service'
 import validation from '../../scripts/utils/validation/form-validation'
 
 const form0keys = {
-  credential: 'input',
+  credential: 'input'
 }
 export default {
   name: 'LostPage',
@@ -45,7 +45,7 @@ export default {
       service({ ...this.auth },
         (success) => {
           if (success.status === 200) {
-            this.$store.commit('PUSH_AUTH_DATA_PASSING', success.data.data)
+            this.$store.commit('PUSH_AUTH_DATA_PASSING', window._merge(success.data.data, { credential: this.credential }))
           }
         },
         (failed) => {
