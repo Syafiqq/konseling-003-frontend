@@ -11,7 +11,7 @@ const { success, error } = interceptor
 instance.interceptors.response.use(success, error)
 const rAxios = {
   refresh: (token) => {
-    instance.defaults.headers.post['Authorization'] = `Bearer ${token}`
+    instance.defaults.headers.common['Authorization'] = `Bearer ${token}`
   },
   axios: () => {
     rAxios.refresh(store.state.token)
