@@ -1,7 +1,7 @@
-import axios from '../http/common-axios'
+import instance from '../services/http/refreshable-axios-service'
 
 export default function (success, failed, always) {
-  return axios
+  return instance.axios()
     .get('/student/dashboard/')
     .then((response) => {
       if (success != null) {
