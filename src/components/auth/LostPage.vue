@@ -47,7 +47,7 @@ export default {
           if (success.status === 200) {
             this.$store.commit('PUSH_AUTH_DATA_PASSING', {
               token: success.data.data.recovery_token,
-              credential: this.credential
+              credential: this.auth.credential
             })
           }
         },
