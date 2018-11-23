@@ -16,7 +16,7 @@ export default async function (to, from, next) {
   }, (rFailed) => {
     alert = rFailed?.response?.data?.alert || []
   })
-  if (!status) {
+  if (status) {
     store.commit('FLASH_ALERT', alert)
     next(vm => {
       vm.setData(data)
