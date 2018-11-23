@@ -83,6 +83,11 @@ export default {
           this.disabled = false
         })
     }
+  },
+  mounted: function () {
+    this.$store.dispatch('pop_auth_data_passing').then((data) => {
+      this.auth = window._.merge(this.auth, data)
+    })
   }
 }
 </script>
