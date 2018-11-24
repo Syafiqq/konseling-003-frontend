@@ -1,4 +1,4 @@
-import instance from '../services/http/refreshable-axios-service'
+import instance from './refreshable-axios-service'
 
 export default function (url, success, failed, always) {
   return instance.axios()
