@@ -2,8 +2,13 @@ export default {
   items: [
     {
       name: 'Dashboard',
-      url: '/dashboard',
+      url: '/home',
       icon: 'icon-home'
+    },
+    {
+      name: 'Profile',
+      url: '/profile',
+      icon: 'icon-user'
     }
   ]
 }
