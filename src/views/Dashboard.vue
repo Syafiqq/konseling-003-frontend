@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import guard from '../scripts/http/guard/dashboard-guard'
+import guard from '../scripts/http/guard/dashboard-get-guard'
 import Page from '../components/DashboardPage'
 
 export default {
