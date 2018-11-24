@@ -2,8 +2,37 @@
   .dashboard
     b-row
       b-col(md='12')
-        b-card(header='Dashboard' footer='Dashboard')
-          | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+        b-card
+          ol
+            li Bacalah pernyataan dengan cermat dan teliti
+            li Pilih salah satu pilihan jawaban yang sesuai dengan keadaan diri Anda.
+            li Isilah semua pernyataan, jangan sampai ada pernyataan yang kosong.
+            li
+              | Teliti kembali pekerjaan Anda sebelum anda mengumpulkan hasil pengerjaan dengan mengklik menu
+              strong  Selesai.
+            li
+              | Inventori ini tidak memengaruhi nilai akademik apapun, jadi pilihlah jawaban yang benar-benar menggambarkan diri Anda..
+          hr
+          p
+            strong Pilihan Jawaban beserta Keterangan :
+          dl.row
+            dt.col-sm-3.text-right Sangat Sesuai
+            dd.col-sm-9 : Apabila item pernyataan sangat mencerminkan kondisi diri anda.
+            dt.col-sm-3.text-right Sesuai
+            dd.col-sm-9 : Apabila item pernyataan cukup mencerminkan kondisi diri anda.
+            dt.col-sm-3.text-right Kurang Sesuai
+            dd.col-sm-9 : Apabila item pernyataan kurang mencerminkan kondisi diri anda.
+            dt.col-sm-3.text-right Tidak Sesuai
+            dd.col-sm-9 : Apabila item pernyataan tidak mencerminkan kondisi diri anda.
+          h3.mb-0(slot='header') Selamat Datang
+          div(slot='footer')
+            div(v-if="course_status === 0")
+              | Lanjutkan Sebelumnya
+            div(v-else-if="course_status === 1")
+              | Mulai Baru
+            div(v-else='')
+              | Anda Tidak Diperkenankan Mengerjakan, Silahkan Hubungi Konselor Anda.
+
 </template>
 
 <script>

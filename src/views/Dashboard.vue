@@ -1,5 +1,6 @@
 <template lang="pug">
-  Page(course_status=this.courseStatus)
+  div
+    Page(v-bind:course_status="courseStatus")
 </template>
 
 <script>
