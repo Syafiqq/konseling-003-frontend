@@ -1,29 +1,34 @@
 <template lang="pug">
-  .animated.fadeIn
-    b-row
-      b-col(md='12')
-        b-card(header='Dashboard' footer='Dashboard')
-          | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+  Page(course_status=this.courseStatus)
 </template>
 
 <script>
 import guard from '../scripts/http/guard/dashboard-guard'
+import Page from '../components/DashboardPage'
 
 export default {
   name: 'Dashboard',
+  components: {
+    Page
+  },
   data () {
     return {
       course_status: 2
     }
   },
   methods: {
-    setData: (data) => {
+    setData (data) {
       this.course_status = data.course_status
+    }
+  },
+  computed: {
+    courseStatus () {
+      return this.course_status
     }
   },
   async beforeRouteEnter (to, from, next) {
     await guard(to, from, next)
-  },
+  }
 }
 </script>
 
