@@ -27,7 +27,8 @@
           h3.mb-0(slot='header') Selamat Datang
           div(slot='footer')
             div(v-if="course_status === 0")
-              | Lanjutkan Sebelumnya
+              router-link.btn.btn-primary.px-4(:to="{name:'course-start', params:{id:1}}", tag='button', type='button')
+                | Lanjutkan Sebelumnya
             div(v-else-if="course_status === 1")
               | Mulai Baru
             div(v-else='')
