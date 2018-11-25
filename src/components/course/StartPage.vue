@@ -9,7 +9,7 @@
               label {{option.description}}
         b-progress.mb-2(height='1.4 rem', :max='100')
           b-progress-bar(:value='cProgress', variant='info', striped='', :animated='true')
-            strong.text-dark {{cProgress.toFixed(2)}} %
+            strong.text-dark {{cProgressVisual}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{{cProgress.toFixed(2)}} %]
         h3.mb-0(slot='header')
           strong {{cQuestion}}
         div.center-text-align(slot='footer')
@@ -81,7 +81,10 @@ export default {
       return this.$props.course.prev != null
     },
     cProgress () {
-      return this.$props.course.summary || 0
+      return ((this.$props.course.summary.answered || 0) * 1.0 / (this.$props.course.summary.total || 1)) * 100
+    },
+    cProgressVisual () {
+      return ` ${(this.$props.course.summary.answered || 0)} dari ${(this.$props.course.summary.total || 1)}`
     }
   }
 }
