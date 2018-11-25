@@ -16,9 +16,6 @@
 
 <script>
 import {
-  Aside as AppAside,
-  AsideToggler,
-  Breadcrumb,
   Footer as TheFooter,
   Header as AppHeader,
   Sidebar as AppSidebar,
@@ -36,12 +33,9 @@ import service from '../scripts/services/auth/logout-service'
 export default {
   name: 'AdminContainerNoAside',
   components: {
-    AsideToggler,
     AppHeader,
     AppSidebar,
-    AppAside,
     TheFooter,
-    Breadcrumb,
     SidebarForm,
     SidebarFooter,
     SidebarToggler,
