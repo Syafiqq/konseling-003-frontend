@@ -6,13 +6,20 @@ export default function (url, data, success, failed, always) {
     .patch(url, data)
     .then((response) => {
       if (success != null) {
-        success(response)
+        if (response.status === 200) {
+          success(response)
+          return
+        } else if (failed != null) {
+          failed(null, response)
+          return
+        }
       }
+      commonAlert(response?.data?.alert || [])
     })
     .catch((rFailed) => {
       commonAlert(rFailed.response?.data?.alert || [])
       if (failed != null) {
-        failed(rFailed)
+        failed(rFailed, rFailed.response)
       }
     })
     .then(() => {
