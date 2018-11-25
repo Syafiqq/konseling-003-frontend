@@ -60,7 +60,7 @@ const router = new Router({
     {
       path: '/course/start/:id',
       name: 'course-start',
-      meta: { layout: 'admin-container-no-aside' },
+      meta: { layout: 'admin-container' },
       component: () => import('./views/course/Start.vue'),
       beforeEnter: authMiddleware
     },
@@ -84,11 +84,6 @@ const router = new Router({
       meta: { layout: 'plain-container' },
       component: () => import('./views/errors/404.vue'),
       beforeEnter: authMiddleware
-    },
-    {
-      path: '/aside',
-      name: 'aside',
-      component: () => import('./containers/AdminContainer.vue'),
     }
   ]
 })
