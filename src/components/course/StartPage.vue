@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import service from '../../scripts/services/course/start-patch-service'
+import commonAlert from '../../scripts/utils/alert/common-alert'
 
 export default {
   name: 'CourseStartPage',
@@ -33,7 +35,16 @@ export default {
   },
   methods: {
     doAnswer () {
-
+      this.disabled = true
+      if (this.answer == null) {
+        commonAlert(['Pertanyaan belum terjawab'])
+        return
+      }
+      service({ answer: this.answer }, () => {
+        this.doNext()
+      }, () => {
+        this.disabled = false
+      })
     },
     doNext () {
       this.$router.push({
