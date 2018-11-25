@@ -8,9 +8,9 @@
       .col-8.justify-content-center.text-center
         .pretty.p-default.p-fill.p-toggle(v-for='j in range(((i - 1) * 5), (((i - 1) * 5) + 5), step=1)', :class="j < cNavigation.length ? 'visible' : 'invisible'")
           input(type='checkbox', checked='', v-if='j < cNavigation.length')
-          .state.p-on(:class="j < cNavigation.length ? cNavigation[j].status === 0 ? 'p-default' : (cNavigation[j].status === 1 ? 'p-primary' : 'p-success') : 'p-default'")
+          .state.p-on(:class="j < cNavigation.length ? cNavigation[j].status === 0 ? 'p-warning' : (cNavigation[j].status === 1 ? 'p-primary' : 'p-success') : 'p-warning'")
             label
-          .state.p-off(:class="j < cNavigation.length ? cNavigation[j].status === 0 ? 'p-default' : (cNavigation[j].status === 1 ? 'p-primary' : 'p-success') : 'p-default'")
+          .state.p-off(:class="j < cNavigation.length ? cNavigation[j].status === 0 ? 'p-warning' : (cNavigation[j].status === 1 ? 'p-primary' : 'p-success') : 'p-warning'")
             label
       .col-2.text-left
         small {{i * 5}}
