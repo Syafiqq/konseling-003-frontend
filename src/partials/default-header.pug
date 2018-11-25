@@ -5,7 +5,7 @@ app-header(fixed)
     img.navbar-brand-minimized(src='../assets/img/logo.png', width='30', height='30', alt='Konseling')
   sidebar-toggler.navbar-minimizer.d-md-down-none(:defaultOpen='first_toggle' display='lg', @click.native="publish('nav-navbar-minimizer')")
   b-navbar-nav.ml-auto
-    aside-toggler.d-lg-block
+    aside-toggler.d-lg-block(:defaultOpen='first_aside_toggle' display='lg', @click.native="publish('nav-aside-minimizer')")
     b-nav-item(href='javascript:void(0)' @click="publish('mp-toggle-window')")
       i.fas.fa-music
     b-nav-item(@click='doLogout' :disabled='isDisabled', href='javascript:void(0)')
