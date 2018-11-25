@@ -13,8 +13,16 @@ module.exports = function (container, $, cookies) {
       cookies.set('navbar-toggle', false)
     }
   }
+  container.aside_minimizer = () => {
+    if (cookies.get('aside-toggle') === 'false') {
+      cookies.set('aside-toggle', true)
+    } else {
+      cookies.set('aside-toggle', false)
+    }
+  }
   $(function () {
     $('.sidebar-minimizer').on('click', container.sidebar_minimizer)
     $('.navbar-minimizer').on('click', container.sidebar_minimizer)
+    $('.aside-minimizer').on('click', container.aside_minimizer)
   })
 }
