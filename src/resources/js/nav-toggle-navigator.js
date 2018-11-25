@@ -15,9 +15,16 @@ module.exports = function (document, cookies) {
       } else {
         document.body.classList.add('sidebar-lg-show')
       }
+      if (cookies.get('aside-toggle') == null) {
+      } else if (cookies.get('aside-toggle') === 'false') {
+        document.body.classList.remove('aside-menu-lg-show')
+      } else {
+        document.body.classList.add('aside-menu-lg-show')
+      }
     }
   } else {
     document.body.classList.remove('brand-minimized')
     document.body.classList.remove('sidebar-minimized')
+    document.body.classList.remove('aside-menu-lg-show')
   }
 }
