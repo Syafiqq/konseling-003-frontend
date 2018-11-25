@@ -3,12 +3,12 @@
     b-col(md='12')
       b-card
         .form-group
-          label(for='school') School
-          input#school.form-control(type='text', placeholder='School', v-model='profile.school')
+          label(for='school') Sekolah
+          input#school.form-control(type='text', placeholder='Sekolah', v-model='profile.school')
           .invalid-feedback
         .form-group
-          label(for='grade') Grade
-          input#grade.form-control(type='text', placeholder='Grade', v-model='profile.grade')
+          label(for='grade') Kelas
+          input#grade.form-control(type='text', placeholder='Kelas', v-model='profile.grade')
           .invalid-feedback
         h3.mb-0(slot='header') Profile
         div(slot='footer')
