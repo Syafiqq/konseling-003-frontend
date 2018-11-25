@@ -36,10 +36,16 @@ export default {
 
     },
     doNext () {
-
+      this.$router.push({
+        name: 'course-start',
+        params: { id: this.$props?.course?.next?.order || this.$router.currentRoute.params.id }
+      })
     },
     doPrev () {
-
+      this.$router.push({
+        name: 'course-start',
+        params: { id: this.$props?.course?.prev?.order || this.$router.currentRoute.params.id }
+      })
     }
   },
   watch: {
@@ -53,9 +59,6 @@ export default {
     },
     cQuestion () {
       return this.$props.course.question?.question || ''
-    },
-    cAnswer () {
-      return this.$props.course.current?.answer || null
     },
     cOptions () {
       return this.$props.course.options || []
