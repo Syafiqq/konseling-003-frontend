@@ -4,12 +4,15 @@
     component(:is='layout')
       transition
         router-view
+      template(v-if=`layout === 'admin-container'`, slot='aside')
+        component(:is='aside')
 </template>
 
 <script>
 // @ is an alias to /src
 import MusicPlayer from './components/MusicPlayer.vue'
 import flashAlert from './scripts/utils/alert/flash-alert'
+import EventBus from './scripts/utils/event-bus'
 
 const defaultLayout = 'plain-container'
 
@@ -18,11 +21,25 @@ export default {
   components: {
     MusicPlayer
   },
+  data () {
+    return {
+      asideTemplate: null
+    }
+  },
   methods: {},
   computed: {
     layout () {
       return (this.$route.meta.layout || defaultLayout)
+    },
+    aside () {
+      return this.asideTemplate
     }
+  },
+
+  mounted () {
+    EventBus.$on('app-ly-aside', (ly) => {
+      this.asideTemplate = ly
+    })
   },
 
   created () {
