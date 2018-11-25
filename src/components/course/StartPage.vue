@@ -11,7 +11,9 @@
             input.form-control(type='radio', :value='option.id' v-model='answer')
             .state.p-info
               label {{option.description}}
-        b-progress.mb-2(:value='50', variant='info', striped='', :animated='true')
+        b-progress.mb-2(:max='100')
+          b-progress-bar(heght='1.5rem' :value='cProgress', variant='info', striped='', :animated='true')
+            strong.text-dark {{cProgress.toFixed(2)}} %
         h3.mb-0(slot='header') Pertanyaan
         div.center-text-align(slot='footer')
           button.align-content-center.btn.btn-sm.float-left.px-4(:class="cPrevAvailable ? 'btn-primary' : 'btn-danger'" type='button', @click='doPrev' :disabled='!cPrevAvailable') Sebelumnya
@@ -58,6 +60,9 @@ export default {
     },
     cPrevAvailable () {
       return this?.course?.prev != null
+    },
+    cProgress () {
+      return this?.course?.summary || 0
     }
   }
 }
