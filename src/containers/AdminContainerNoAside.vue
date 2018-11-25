@@ -34,7 +34,7 @@ import EventBus from '../scripts/utils/event-bus'
 import service from '../scripts/services/auth/logout-service'
 
 export default {
-  name: 'AdminContainer',
+  name: 'AdminContainerNoAside',
   components: {
     AsideToggler,
     AppHeader,
