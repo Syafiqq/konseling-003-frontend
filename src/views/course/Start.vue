@@ -28,6 +28,7 @@ export default {
   methods: {
     setData (data) {
       this.course = data
+      this.$store.commit('COURSE_NAVIGATION', data.navigation)
     }
   },
   computed: {

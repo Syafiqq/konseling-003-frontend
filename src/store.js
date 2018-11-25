@@ -10,6 +10,7 @@ const FLASH_ALERT = 'FLASH_ALERT'
 const REFLASH_ALERT = 'REFLASH_ALERT'
 const PUSH_AUTH_DATA_PASSING = 'PUSH_AUTH_DATA_PASSING'
 const PURGE_AUTH_DATA_PASSING = 'PURGE_AUTH_DATA_PASSING'
+const COURSE_NAVIGATION = 'COURSE_NAVIGATION'
 
 export default new Vuex.Store({
   state: {
@@ -17,7 +18,8 @@ export default new Vuex.Store({
     alert: [],
     reflashAlert: false,
     notify: [],
-    authDataPassing: {}
+    authDataPassing: {},
+    courseNavigation: []
   },
   mutations: {
     [STORE_TOKEN] (state, token) {
@@ -41,6 +43,9 @@ export default new Vuex.Store({
     },
     [PURGE_AUTH_DATA_PASSING] (state) {
       state.authDataPassing = {}
+    },
+    [COURSE_NAVIGATION] (state, data) {
+      state.courseNavigation = data || []
     }
   },
   actions: {
