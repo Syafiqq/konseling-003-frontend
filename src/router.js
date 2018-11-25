@@ -84,6 +84,11 @@ const router = new Router({
       meta: { layout: 'plain-container' },
       component: () => import('./views/errors/404.vue'),
       beforeEnter: authMiddleware
+    },
+    {
+      path: '/aside',
+      name: 'aside',
+      component: () => import('./containers/AdminContainer.vue'),
     }
   ]
 })
