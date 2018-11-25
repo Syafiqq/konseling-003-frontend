@@ -9,13 +9,15 @@
               label {{option.description}}
         b-progress.mb-2(height='1.4 rem', :max='100')
           b-progress-bar(:value='cProgress', variant='info', striped='', :animated='true')
-            strong.text-dark {{cProgressVisual}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{{cProgress.toFixed(2)}} %]
+            strong.text-dark  {{cProgressAnswered}} dari {{cProgressTotal}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[{{cProgress.toFixed(2)}} %]
         h3.mb-0(slot='header')
           strong {{cQuestion}}
         div.center-text-align(slot='footer')
-          button.align-content-center.btn.btn-sm.float-left.px-4(:class="cPrevAvailable ? 'btn-primary' : 'btn-danger'" type='button', @click='doPrev' :disabled='!cPrevAvailable') Sebelumnya
-          button.align-content-center.btn.btn-primary.px-4(type='button', @click='doAnswer' :disabled='isDisabled') Jawab
-          button.align-content-center.btn.btn-sm.float-right.px-4(:class="cNextAvailable ? 'btn-primary' : 'btn-danger'" type='button', @click='doNext' :disabled='!cNextAvailable') Selanjutnya
+          .row
+            .col-sm-12
+              button.align-content-center.btn.btn-sm.float-left.px-4(:class="cPrevAvailable ? 'btn-primary' : 'btn-danger'" type='button', @click='doPrev' :disabled='!cPrevAvailable') Sebelumnya
+              button.align-content-center.btn.btn-primary.px-4(type='button', @click='doAnswer' :disabled='isDisabled') Jawab
+              button.align-content-center.btn.btn-sm.float-right.px-4(:class="cNextAvailable ? 'btn-primary' : 'btn-danger'" type='button', @click='doNext' :disabled='!cNextAvailable') Selanjutnya
 </template>
 
 <script>
@@ -81,10 +83,13 @@ export default {
       return this.$props.course.prev != null
     },
     cProgress () {
-      return ((this.$props.course.summary.answered || 0) * 1.0 / (this.$props.course.summary.total || 1)) * 100
+      return this.cProgressAnswered * 1.0 / this.cProgressTotal * 100
     },
-    cProgressVisual () {
-      return ` ${(this.$props.course.summary.answered || 0)} dari ${(this.$props.course.summary.total || 1)}`
+    cProgressAnswered () {
+      return this.$props.course.summary.answered || 0
+    },
+    cProgressTotal () {
+      return this.$props.course.summary.total || 1
     }
   }
 }
