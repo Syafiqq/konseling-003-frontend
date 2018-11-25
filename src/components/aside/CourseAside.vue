@@ -14,6 +14,9 @@
             label
       .col-2.text-left
         small {{i * 5}}
+    .row.mt-5
+      .col-sm-12
+        button.align-content-center.btn.btn-sm.float-right.px-4(:class="cNextAvailable ? 'btn-primary' : 'btn-danger'" type='button', @click='doNext' :disabled='!cNextAvailable') Selanjutnya
 </template>
 
 <script>
@@ -30,14 +33,20 @@ export default {
     },
     doNavigate (idx) {
       this.$router.push({ name: 'course-start', params: { id: idx } })
+    },
+    doNext () {
+      this.doNavigate(this.$router.currentRoute.params.id + 1)
     }
   },
   computed: {
     cNavigation () {
-      return this.navigation
+      return this.navigation || []
     },
     cNavCounter () {
       return Math.ceil(this.cNavigation.length / 5.0) || 1
+    },
+    cNextAvailable () {
+      return this.$router.currentRoute.params.id < this.cNavigation.length
     }
   },
   mounted () {
