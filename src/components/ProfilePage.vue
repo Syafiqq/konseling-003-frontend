@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import service from '../scripts/services/profile/profile-patch-service'
+
 export default {
   name: 'ProfilePage',
   props: {
@@ -28,6 +30,10 @@ export default {
   },
   methods: {
     doUpdate () {
+      this.disabled = true
+      service({ ...this.profile }, () => {
+        this.disabled = false
+      })
     }
   },
   computed: {
