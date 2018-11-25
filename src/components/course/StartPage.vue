@@ -7,7 +7,7 @@
             input.form-control(type='radio', :value='option.id' v-model='answer')
             .state.p-info
               label {{option.description}}
-        b-progress.mb-2(height='1.4rem', :max='100')
+        b-progress.mb-2(height='1.4 rem', :max='100')
           b-progress-bar(:value='cProgress', variant='info', striped='', :animated='true')
             strong.text-dark {{cProgress.toFixed(2)}} %
         h3.mb-0(slot='header')
@@ -42,24 +42,32 @@ export default {
 
     }
   },
+  watch: {
+    course: function (val) {
+      this.answer = val?.current?.answer || null
+    }
+  },
   computed: {
     isDisabled: function () {
       return this.disabled
     },
     cQuestion () {
-      return this.course?.question?.question || ''
+      return this.$props.course.question?.question || ''
+    },
+    cAnswer () {
+      return this.$props.course.current?.answer || null
     },
     cOptions () {
-      return this.course.options || []
+      return this.$props.course.options || []
     },
     cNextAvailable () {
-      return this?.course?.next != null
+      return this.$props.course.next != null
     },
     cPrevAvailable () {
-      return this?.course?.prev != null
+      return this.$props.course.prev != null
     },
     cProgress () {
-      return this?.course?.summary || 0
+      return this.$props.course.summary || 0
     }
   }
 }
