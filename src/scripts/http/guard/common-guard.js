@@ -6,7 +6,7 @@ export default async function (service, to, from, next) {
   let data = {}
   let alert = []
   let status = false
-  await service((rSuccess) => {
+  await service(to, (rSuccess) => {
     if (rSuccess.status === 200) {
       data = rSuccess?.data?.data || {}
       status = true
