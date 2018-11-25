@@ -54,7 +54,8 @@ export default {
     return {
       nav: nav.items,
       disabled: false,
-      first_toggle: this.$cookies.get('navbar-toggle') == null ? true : this.$cookies.get('navbar-toggle') === 'true'
+      first_sidebar_toggle: this.$cookies.get('navbar-toggle') == null ? true : this.$cookies.get('navbar-toggle') === 'true',
+      first_aside_toggle: this.$cookies.get('aside-toggle') == null ? false : this.$cookies.get('aside-toggle') === 'false'
     }
   },
   computed: {
