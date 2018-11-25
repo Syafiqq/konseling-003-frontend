@@ -7,10 +7,10 @@
         small {{1 + ((i - 1) * 5)}}
       .col-8.justify-content-center.text-center
         .pretty.p-default.p-fill.p-toggle(v-for='j in range(((i - 1) * 5), (((i - 1) * 5) + 5), step=1)', :class="j < cNavigation.length ? 'visible' : 'invisible'")
-          input(type='checkbox', checked='', v-if='j < cNavigation.length')
-          .state.p-on(:class="j < cNavigation.length ? cNavigation[j].status === 0 ? 'p-warning' : (cNavigation[j].status === 1 ? 'p-primary' : 'p-success') : 'p-warning'")
+          input(type='checkbox', @click="doNavigate(j + 1)", checked='', v-if='j < cNavigation.length')
+          .state.p-on(:class="j < cNavigation.length ? (cNavigation[j].status === 2 ? 'p-success' : (cNavigation[j].status === 1 ? 'p-primary' : 'p-warning')) : 'p-warning'")
             label
-          .state.p-off(:class="j < cNavigation.length ? cNavigation[j].status === 0 ? 'p-warning' : (cNavigation[j].status === 1 ? 'p-primary' : 'p-success') : 'p-warning'")
+          .state.p-off(:class="j < cNavigation.length ? (cNavigation[j].status === 2 ? 'p-success' : (cNavigation[j].status === 1 ? 'p-primary' : 'p-warning')) : 'p-warning'")
             label
       .col-2.text-left
         small {{i * 5}}
@@ -27,6 +27,9 @@ export default {
   methods: {
     range (s, e, t) {
       return window._.range(s, e, t)
+    },
+    doNavigate (idx) {
+      this.$router.push({ name: 'course-start', params: { id: idx } })
     }
   },
   computed: {
