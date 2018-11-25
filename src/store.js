@@ -82,5 +82,8 @@ export default new Vuex.Store({
         resolve(data)
       })
     }
+  },
+  getters: {
+    gCourseNavigation: state => () => state.courseNavigation
   }
 })
