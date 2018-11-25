@@ -4,6 +4,7 @@
 
 <script>
 import guard from '../../scripts/http/guard/course/start-get-guard'
+import updateGuard from '../../scripts/http/guard/course/start-get-guard-update'
 import Page from '../../components/course/StartPage'
 import EventBus from '../../scripts/utils/event-bus'
 
@@ -39,6 +40,9 @@ export default {
   },
   async beforeRouteEnter (to, from, next) {
     await guard(to, from, next)
+  },
+  async beforeRouteUpdate (to, from, next) {
+    await updateGuard(this, to, from, next)
   }
 }
 </script>
