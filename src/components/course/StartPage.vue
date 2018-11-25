@@ -20,11 +20,12 @@
               button.align-content-center.btn.btn-sm.float-right.px-4(:class="cNextAvailable ? 'btn-primary' : 'btn-danger'" type='button', @click='doNext' :disabled='!cNextAvailable') Selanjutnya
           .row.mt-5(v-if='cProgressAnswered === cProgressTotal')
             .col-sm-12
-              button.align-content-center.btn.btn-primary.px-4(type='button', @click='doAnswer' :disabled='isDisabled') Selesai
+              button.align-content-center.btn.btn-primary.px-4(type='button', @click='doFinish' :disabled='isDisabled') Selesai
 </template>
 
 <script>
 import service from '../../scripts/services/course/start-patch-service'
+import submit from '../../scripts/services/course/start-submit-service'
 import commonAlert from '../../scripts/utils/alert/common-alert'
 
 export default {
@@ -50,6 +51,9 @@ export default {
       }, () => {
         this.disabled = false
       })
+    },
+    doFinish () {
+      submit()
     },
     doNext () {
       this.$router.push({
