@@ -2,7 +2,7 @@
   extends ../partials/root.pug
 
   block header
-    include ../partials/default-header.pug
+    include ../partials/default-header-no-aside-toggler.pug
 
   block sidebar
     include ../partials/default-sidebar.pug
