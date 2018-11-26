@@ -53,7 +53,10 @@ export default {
       })
     },
     doFinish () {
-      submit()
+      this.disabled = true
+      submit(null, null, () => {
+        this.disabled = false
+      })
     },
     doNext () {
       this.$router.push({
