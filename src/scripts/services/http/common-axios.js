@@ -7,4 +7,14 @@ loadProgressBar({}, instance)
 
 axiosCommonConfig(instance)
 
-export default instance
+const rAxios = {
+  refresh: () => {
+    instance.defaults.headers.common['Authorization'] = null
+  },
+  axios: () => {
+    rAxios.refresh()
+    return instance
+  }
+}
+
+export default rAxios
