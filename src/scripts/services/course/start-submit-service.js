@@ -12,6 +12,7 @@ export default function (success, failed, always) {
       }
       if (response.status === 200) {
         store.commit('FLASH', { notify: response?.data?.notify, alert: response?.data?.alert })
+        store.commit('COURSE_NAVIGATION', [])
         router.push({ name: 'home' })
       }
     })
