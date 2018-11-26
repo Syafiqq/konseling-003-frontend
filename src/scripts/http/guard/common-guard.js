@@ -16,7 +16,7 @@ export default async function (service, to, from, next) {
     alert = rFailed?.response?.data?.alert || []
   })
   if (status) {
-    store.commit('FLASH_ALERT', alert)
+    store.commit('MERGE_ALERT', alert)
     next(vm => vm.setData(data))
   } else {
     if (router.currentRoute?.path === from.path) {

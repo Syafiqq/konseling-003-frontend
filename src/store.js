@@ -8,6 +8,7 @@ const FLASH = 'FLASH'
 const FLASH_NOTIFY = 'FLASH_NOTIFY'
 const FLASH_ALERT = 'FLASH_ALERT'
 const REFLASH_ALERT = 'REFLASH_ALERT'
+const MERGE_ALERT = 'MERGE_ALERT'
 const PUSH_AUTH_DATA_PASSING = 'PUSH_AUTH_DATA_PASSING'
 const PURGE_AUTH_DATA_PASSING = 'PURGE_AUTH_DATA_PASSING'
 const COURSE_NAVIGATION = 'COURSE_NAVIGATION'
@@ -34,6 +35,9 @@ export default new Vuex.Store({
     },
     [FLASH_ALERT] (state, alert) {
       state.alert = alert
+    },
+    [MERGE_ALERT] (state, alert) {
+      state.alert = window._.merge(state.alert.concat(alert || []))
     },
     [REFLASH_ALERT] (state, alert) {
       state.reflashAlert = alert
