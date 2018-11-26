@@ -35,7 +35,7 @@ const interceptor = {
         addSubscriber((token, cause) => {
           if (token) {
             originalRequest.headers.Authorization = 'Bearer ' + token
-            resolve(axios(originalRequest))
+            resolve(axios.axios(originalRequest))
           } else {
             reject(cause)
           }

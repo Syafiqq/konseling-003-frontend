@@ -1,9 +1,10 @@
 import axios from '../http/common-axios'
 import store from '../../../store'
 import router from '../../../router'
+import commonAlert from '../../utils/alert/common-alert'
 
 export default function (credentials, success, failed, always) {
-  return axios
+  return axios.axios()
     .post('/student/auth/login', credentials)
     .then((response) => {
       if (success != null) {
@@ -18,6 +19,14 @@ export default function (credentials, success, failed, always) {
         })
       }
     })
-    .catch(failed)
+    .catch((rFailed) => {
+      if (failed) {
+        failed(rFailed.response)
+      }
+      if (rFailed.response.status === 403) {
+        commonAlert(rFailed.response.data.alert || [])
+        store.dispatch('purge_token').then()
+      }
+    })
     .then(always)
 }
