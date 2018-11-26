@@ -30,17 +30,40 @@
               router-link.btn.btn-primary.px-4(:to="{name:'course-start', params:{id:1}}", tag='button', type='button')
                 | Lanjutkan Sebelumnya
             div(v-else-if="course_status === 1")
-              | Mulai Baru
+              button.btn.btn-primary.px-4(@click='doStart', type='button', :disabled='isDisabled')
+                | Mulai Baru
             div(v-else='')
               | Anda Tidak Diperkenankan Mengerjakan, Silahkan Hubungi Konselor Anda.
 
 </template>
 
 <script>
+import start from '../scripts/services/dashboard-start-service'
+
 export default {
   name: 'DashboardPage',
   props: {
     course_status: Number
+  },
+  data () {
+    return {
+      disabled: false
+    }
+  },
+  computed: {
+    isDisabled: function () {
+      return this.disabled
+    }
+  },
+  methods: {
+    doStart () {
+      this.disabled = true
+      start(() => {
+        this.$router.push({ name: 'course-start', params: { id: 1 } })
+      }, null, () => {
+        this.disabled = false
+      })
+    }
   }
 }
 </script>
