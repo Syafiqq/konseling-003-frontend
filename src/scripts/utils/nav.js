@@ -9,6 +9,11 @@ export default {
       name: 'Profile',
       url: '/profile',
       icon: 'icon-user'
+    },
+    {
+      name: 'Result',
+      url: '/course/result',
+      icon: 'icon-list'
     }
   ]
 }
