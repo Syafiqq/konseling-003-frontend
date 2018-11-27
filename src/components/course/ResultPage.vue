@@ -35,12 +35,13 @@
                   th.text-center(v-for='c in cCategories')
                     | {{c.name}}
                   th.text-center Aksi
-          .row
-            .col-12
-              dl.row
-                template(v-for='c in cCategories')
-                  dt.col-sm-3.text-right {{c.name}}
-                  dd.col-sm-9 : {{c.description}}
+        .row.mt-3
+          .col-sm-12
+            h4 Keterangan
+            dl.row
+              template(v-for='c in cCategories')
+                dt.col-sm-3.text-right {{c.name}}
+                dd.col-sm-9 : {{c.description}}
         h3.mb-0(slot='header')
           strong Hasil
 </template>
@@ -62,6 +63,15 @@ export default {
     isFinish (answer) {
       return (answer.finished_at || null) != null
     }
+  },
+  mounted () {
+    this.$nextTick(function () {
+      (function ($) {
+        $(function () {
+          $('#table-0').DataTable()
+        })
+      })(window.$)
+    })
   },
   computed: {
     isDisabled: function () {
