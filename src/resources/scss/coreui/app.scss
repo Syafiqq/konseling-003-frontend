@@ -1,2 +1,8 @@
 @import "~@coreui/coreui/scss/coreui";
 @import "./sidebar/app";
+
+.table thead th.header-correction {
+  border-color: transparent;
+  border-bottom: inherit;
+  padding: 0;
+}
