@@ -24,7 +24,7 @@
                   td {{index+1}}
                   td {{ans.started_at}}
                   td {{isFinish(ans) ? ans.finished_at : 'Tahap Pengerjaan'}}
-                  td.text-center(v-for='c in cCategories') {{isFinish(ans) ? `${ans.result[c.id].result} %`: '-'}}
+                  td.text-center(v-for='c in cCategories') {{isFinish(ans) ? `${ans.result[c.id].result.toFixed(2)} %`: '-'}}
                   td.text-center
                     router-link.btn.btn-block.btn-link.px-0(:to="{name:'course-result-detail', params:{id:ans.id}}", type='button', tag='button') Detail
               tfoot
