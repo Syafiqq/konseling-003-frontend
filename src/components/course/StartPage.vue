@@ -47,8 +47,14 @@ export default {
         this.disabled = false
         return
       }
-      service({ answer: this.answer }, () => {
-        this.doNext()
+      service({ answer: this.answer }, (s) => {
+        if (s.data.data.summary) {
+          this.$props.course.summary.answered = s.data.data.summary.answered
+          this.$props.course.summary.total = s.data.data.summary.total
+        }
+        if (s?.data?.data?.next) {
+          this.doNext(s.data.data.next)
+        }
       }, () => {
         this.disabled = false
       })
@@ -59,10 +65,10 @@ export default {
         this.disabled = false
       })
     },
-    doNext () {
+    doNext (next) {
       this.$router.push({
         name: 'course-start',
-        params: { id: this.$props?.course?.next?.order || this.$router.currentRoute.params.id }
+        params: { id: next || this.$props?.course?.next?.order || this.$router.currentRoute.params.id }
       })
     },
     doPrev () {
@@ -97,6 +103,7 @@ export default {
       return this.cProgressAnswered * 1.0 / this.cProgressTotal * 100
     },
     cProgressAnswered () {
+      console.log({ progressAnswer: this.$props.course.summary.answered || 0 })
       return this.$props.course.summary.answered || 0
     },
     cProgressTotal () {
