@@ -103,7 +103,6 @@ export default {
       return this.cProgressAnswered * 1.0 / this.cProgressTotal * 100
     },
     cProgressAnswered () {
-      console.log({ progressAnswer: this.$props.course.summary.answered || 0 })
       return this.$props.course.summary.answered || 0
     },
     cProgressTotal () {
