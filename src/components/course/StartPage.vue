@@ -44,6 +44,7 @@ export default {
       this.disabled = true
       if (this.answer == null) {
         commonAlert(['Pertanyaan belum terjawab'])
+        this.disabled = false
         return
       }
       service({ answer: this.answer }, () => {
