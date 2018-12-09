@@ -1,16 +1,11 @@
 <template lang="pug">
   .landing-page
-    nav.navbar.navbar-light.bg-light.static-top
-      .container
-        a.navbar-brand(href='javascript:void(0)') Start Bootstrap
-        router-link.btn.btn-primary(:to="{ name: 'auth-login'}", href='javascript:void(0)', v-if='!isLoggedIn') Masuk
-        button.btn.btn-primary(@click='doLogout' :disabled='isDisabled', v-if='isLoggedIn') Keluar
     header.masthead.text-white.text-center
       .overlay
       .container
         .row
           .col-xl-9.mx-auto
-            img.img-fluid.rounded-circle.mb-3(src='../assets/img/landing-page/logo.png', alt='')
+            img.img-fluid.mb-3(src='../assets/img/landing-page/logo.png', alt='')
           .col-xl-9.mx-auto#title-0001
             .mb-5.text-md-center
               |  Aplikasi Inventori
@@ -24,24 +19,20 @@
     section.features-icons.bg-light.text-center
       .container
         .row
-          .col-lg-4
-            .features-icons-item.mx-auto.mb-5.mb-lg-0.mb-lg-3
-              .features-icons-icon.d-flex
-                i.icon-screen-desktop.m-auto.text-primary
-              h3 Fully Responsive
-              p.lead.mb-0 This theme will look great on any device, no matter the size!
-          .col-lg-4
-            .features-icons-item.mx-auto.mb-5.mb-lg-0.mb-lg-3
-              .features-icons-icon.d-flex
-                i.icon-layers.m-auto.text-primary
-              h3 Bootstrap 4 Ready
-              p.lead.mb-0 Featuring the latest build of the new Bootstrap 4 framework!
-          .col-lg-4
-            .features-icons-item.mx-auto.mb-0.mb-lg-3
-              .features-icons-icon.d-flex
-                i.icon-check.m-auto.text-primary
-              h3 Easy to Use
-              p.lead.mb-0 Ready to use with your own content, or customize the source files!
+          .col-md-12
+            h1.section-title NILAI MORAL TRUTHFULNESS
+            .section-title-divider
+            h2.section-description Penjelasan teoritis dan operasional atas konsep nilai moral Truthfulness
+        .row.mt-5
+          .col-lg-5
+            img.img-fluid.mb-3(src='../assets/img/landing-page/images.jpg', alt='')
+          .col-lg-6.offset-1
+            p.text-left
+              | Purwadarminta dalam Kamus Umum Bahasa Indonesia menerangkan bahwa kebenaran (truthfulness) adalah 1) Keadaan (hal dan sebagainya) yang benar (cocok dengan hal atau keadaan yang sesungguhnya. 2) Sesuatu yang benar (sungguh-sungguh ada, betul-betul hal demikian halnya, dan sebagainya). 3) Kejujuran, kelurusan hati. Menurut Ozar nilai khas moral yang ada dimasyarakat yang berfungsi sebagai bentuk kebenaran dalam berkomunikasi. Dalam jurnal penelitiannya Ozar memfokuskan pada membahas mengenai pentingnya moral atau kebenaran komunikatif yang dapat ditemukan dalam pemahaman kita tentang konsep ketulusan dan kejujuran.
+            p.text-left
+              | Kebenaran komunikatif seseorang terhadap orang lain sangat erat hubungannya dengan pembentukan kebenaran komunikatif dari budaya kita. Salah satu kebenaran komunikatif yang disebutkan oleh Ozar adalah ketulusan. Ketulusan merupakan suatu keyakinan dari dalam hati kita. Seperti halnya dengan ketulusan, Jujur merupakan sikap hati dalam berperilaku sesuai dengan keyakinan dan nilai yang ada pada dirinya.
+            p.text-left
+              | Dalam jurnalnya yang berjudul &ldquo;The Values of Truth and the Truth of Values&rdquo; Lycnh menjelaskan bahwa salah satu nilai dalam Truthfulness adalah kebenaran sebagai norma kepercayaan yang merupakan salah satu nilai moral individu ketika mempercayai sesuatu mereka menganggap bahwa itu benar. Dan kebenaran merupakan tujuan individu untuk dapat mempercayai sesuatu.
     section.showcase
       .container-fluid.p-0
         .row.no-gutters
