@@ -71,7 +71,7 @@
                           th.text-center
                             b Interpretasi
                       tbody
-                        tr(v-for="analytic in cStudent.answer[0]['analytics']" v-if="cStudent.answer[0]['accumulation'] > analytic.guard.min && cStudent.answer[0]['accumulation'] <= analytic.guard.max")
+                        tr(v-for="analytic in cStudent.answer[0]['analytics']")
                           td.text-center
                             b {{analytic.interval || '-'}}
                           td.text-center
