@@ -13,12 +13,24 @@ export default {
   },
   data () {
     return {
-      student: {}
+      student: {
+        student: {
+          school: '',
+          grade: ''
+        },
+        name: '',
+        credential: '',
+        gender: '',
+        f_gender: '',
+        answer: [{
+          f_finished_at: ''
+        }]
+      }
     }
   },
   methods: {
     setData (data) {
-      this.student = data
+      this.student = data.student || {}
     }
   },
   computed: {
