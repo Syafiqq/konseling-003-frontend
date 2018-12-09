@@ -64,14 +64,14 @@
                     table.table
                       thead
                         tr
-                          th.text-center(width='250')
+                          th.text-center(width='200')
                             b Interval Persentase
-                          th.text-center(width='250')
+                          th.text-center(width='200')
                             b Klasifikasi
                           th.text-center
                             b Interpretasi
                       tbody
-                        tr(v-for="analytic in cStudent.answer[0]['analytics']")
+                        tr(v-for="analytic in cStudent.answer[0]['analytics']" v-if="cStudent.answer[0]['accumulation'] > analytic.guard.min && cStudent.answer[0]['accumulation'] <= analytic.guard.max")
                           td.text-center
                             b {{analytic.interval || '-'}}
                           td.text-center
