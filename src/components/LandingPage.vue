@@ -33,8 +33,42 @@
               | Kebenaran komunikatif seseorang terhadap orang lain sangat erat hubungannya dengan pembentukan kebenaran komunikatif dari budaya kita. Salah satu kebenaran komunikatif yang disebutkan oleh Ozar adalah ketulusan. Ketulusan merupakan suatu keyakinan dari dalam hati kita. Seperti halnya dengan ketulusan, Jujur merupakan sikap hati dalam berperilaku sesuai dengan keyakinan dan nilai yang ada pada dirinya.
             p.text-left
               | Dalam jurnalnya yang berjudul &ldquo;The Values of Truth and the Truth of Values&rdquo; Lycnh menjelaskan bahwa salah satu nilai dalam Truthfulness adalah kebenaran sebagai norma kepercayaan yang merupakan salah satu nilai moral individu ketika mempercayai sesuatu mereka menganggap bahwa itu benar. Dan kebenaran merupakan tujuan individu untuk dapat mempercayai sesuatu.
+    header.masthead1.text-white.text-center
+      .overlay
+      .container
+        .row
+          .col-md-12
+            h3.subscribe-title Mulai Menggunakan Aplikasi
+            p.subscribe-text
+              | Aplikasi ini akan menjaga privasi pengguna dengan adanya akun, sehingga setiap pengguna Aplikasi ini wajib memiliki akun untuk menggunakn Aplikasi ini.
+          .col-md-10.col-lg-8.col-xl-7.mx-auto(v-if='!isLoggedIn')
+            .form-row
+              .col-12.col-md-9.mb-2.mb-md-0
+                input.form-control.form-control-lg(type='email', placeholder='Tuliskan NISN Anda', v-model='authPass.credential')
+              .col-12.col-md-3
+                button.btn.btn-block.btn-lg.btn-primary(@click="proceedRegister") Masuk!
     section.showcase
       .container-fluid.p-0
+        .row.m-3.align-items-center
+          .col-lg-3.text-center
+            img.img-thumbnail.img-fluid.rounded-circle.mb-3(width=250, src='../assets/img/landing-page/prof.jpg', alt='')
+            h4 Prof. Dr. Hj. Nur Hidayah, M.Pd
+            span Dosen Pembimbing
+          .col-lg-9
+            .card.align-middle
+              .card-body
+                p.card-text
+                  .quote
+                    b
+                      img(src='../assets/img/landing-page/quote_sign_left.png', alt='')
+                    |  Lahir di Gresik, 17 Agustus 1959 dan Bertempat tinggal di Perum Permata Hijau D/57, Kota Malang. Memiliki Hobby Membaca dan Motto &ldquo; Be Your Self&rdquo;. Telah selesai menempuh Pendidikan S-1 jurusan Bimbingan dan Konseling dan sedang menyelesaikan studi S-2 Bimbingan dan Konseling Universitas Negeri Malang
+                    b
+                      img(src='../assets/img/landing-page/quote_sign_right.png', alt='')
+                    br
+                    br
+                    |  email: nur.hidayah.fip@gmail.com
+                    br
+                    |  phone: 082132852538
         .row.no-gutters
           .col-lg-6.order-lg-2.text-white.showcase-img.showcase-1
           .col-lg-6.order-lg-1.my-auto.showcase-text
@@ -152,7 +186,7 @@ export default {
     },
     proceedRegister () {
       this.$store.commit('PUSH_AUTH_DATA_PASSING', { ...this.authPass })
-      this.$router.push({ name: 'auth-register' })
+      this.$router.push({ name: 'auth-login' })
     }
   },
   components: {}

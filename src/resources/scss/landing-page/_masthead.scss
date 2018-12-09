@@ -6,6 +6,7 @@ header.masthead {
   @include background-cover;
   padding-top: 8rem;
   padding-bottom: 8rem;
+
   .overlay {
     position: absolute;
     background: rgba(222, 200, 219, 0.64);
@@ -14,9 +15,42 @@ header.masthead {
     top: 0;
     left: 0;
   }
+
   h1 {
     font-size: 2rem;
   }
+
+  @media (min-width: 768px) {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+    h1 {
+      font-size: 3rem;
+    }
+  }
+}
+
+header.masthead1 {
+  position: relative;
+  background-color: $gray-800;
+  background: url('~@/assets/img/landing-page/subscribe-bg.jpg') bottom center fixed;
+  background-size: cover;
+  @include background-cover;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  .overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
   @media (min-width: 768px) {
     padding-top: 12rem;
     padding-bottom: 12rem;
