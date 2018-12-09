@@ -7,17 +7,11 @@
             .card-body.p-4
               h1 Pemulihan
                 small.text-muted.font-sm.pl-2 Isikan password baru diri anda
-              #form-0-credential.input-group.mb-3
-                .input-group-prepend
-                  span.input-group-text
-                    i.icon-user
-                input.form-control(type='text', placeholder='NISN', :value='auth.credential' :disabled='true')
-                .invalid-feedback
               #form-0-token.input-group.mb-3
                 .input-group-prepend
                   span.input-group-text
                     i.icon-key
-                input.form-control(type='text', placeholder='Token', :value='auth.token' :disabled='true')
+                input.form-control(type='text', placeholder='Token', v-model='auth.token')
                 .invalid-feedback
               #form-0-password.input-group.mb-3
                 .input-group-prepend
@@ -39,7 +33,6 @@ import service from '../../scripts/services/auth/recover-service'
 import validation from '../../scripts/utils/validation/form-validation'
 
 const form0keys = {
-  credential: 'input',
   token: 'input',
   password: 'input',
   password_conf: 'input'
@@ -50,7 +43,6 @@ export default {
     return {
       disabled: false,
       auth: {
-        'credential': '',
         'token': '',
         'password': '',
         'password_confirmation': ''
@@ -70,7 +62,7 @@ export default {
         (success) => {
           if (success.status === 200) {
             this.$store.commit('PUSH_AUTH_DATA_PASSING', {
-              credential: this.auth.credential,
+              credential: '',
               password: this.auth.password
             })
           }
