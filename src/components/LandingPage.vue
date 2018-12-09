@@ -10,13 +10,17 @@
       .container
         .row
           .col-xl-9.mx-auto
-            h1.mb-5 Build a landing page for your business or project and generate more leads!
+            img.img-fluid.rounded-circle.mb-3(src='../assets/img/landing-page/logo.png', alt='')
+          .col-xl-9.mx-auto#title-0001
+            .mb-5.text-md-center
+              |  Aplikasi Inventori
+              span.animated.rotating
+                i  Nilai Moral Truthfulness
+              |  Bagi Siswa SMP
           .col-md-10.col-lg-8.col-xl-7.mx-auto(v-if='!isLoggedIn')
             .form-row
-              .col-12.col-md-9.mb-2.mb-md-0
-                input.form-control.form-control-lg(type='email', placeholder='Tuliskan NISN Anda', v-model='authPass.credential')
-              .col-12.col-md-3
-                button.btn.btn-block.btn-lg.btn-primary(@click="proceedRegister") Daftar!
+              .col-4.col-md-4.offset-4
+                button.btn.btn-block.btn-lg.btn-outline-primary.hero-border.hero-bg.hero-fg(@click="proceedRegister") MULAI SEKARANG!
     section.features-icons.bg-light.text-center
       .container
         .row
@@ -177,5 +181,18 @@ export default {
 
 .showcase-1 {
   background-image: url('~@/assets/img/landing-page/bg-showcase-1.jpg');
+}
+</style>
+<style scoped lang="css">
+.hero-bg:hover {
+  background: #bb16b6
+}
+
+.hero-fg {
+  color: #48032c;
+}
+
+.hero-border {
+  border-color: #48032c;
 }
 </style>
