@@ -43,7 +43,7 @@
                 dt.col-sm-3.text-right {{c.name}}
                 dd.col-sm-9 : {{c.description}}
         h3.mb-0(slot='header')
-          strong Hasil
+          |  Hasil
 </template>
 
 <script>

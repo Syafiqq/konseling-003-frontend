@@ -86,7 +86,7 @@
                   .col-sm-10.text-left
                     p(style='margin: 4px; font-size: 16px;')
         h3.mb-0(slot='header')
-          strong Detail
+          |  Detail
 </template>
 
 <script>
