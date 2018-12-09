@@ -18,7 +18,6 @@ export default {
   },
   methods: {
     setData (data) {
-      console.log(data)
       this.student = data
     }
   },
