@@ -55,9 +55,36 @@
                       |  memiliki tingkat kejujuran
                       b  {{this.cStudent.answer[0]['accumulation'].toFixed(2)  || 0}}
                       |  % dan termasuk dalam klasifikasi
-                      b  {{this.cStudentClass || '-'}}
+                      b  {{this.cStudentClass == null ? null : this.cStudentClass['class'] || '-'}}
                 .row
                   .col-sm-12
+                .row
+                  .col-sm-1
+                  .col-sm-10
+                    table.table
+                      thead
+                        tr
+                          th.text-center(width='250')
+                            b Interval Persentase
+                          th.text-center(width='250')
+                            b Klasifikasi
+                          th.text-center
+                            b Interpretasi
+                      tbody
+                        tr(v-for="analytic in cStudent.answer[0]['analytics']")
+                          td.text-center
+                            b {{analytic.interval || '-'}}
+                          td.text-center
+                            b {{analytic.class || '-'}}
+                          td
+                            b {{analytic.description.key || '-'}}
+                            br
+                            |  {{analytic.description.value || '-'}}
+                    p(v-html="cStudentClass == null ? null : cStudentClass['recommendation'].replace('$$0', cStudent.name) || '-'")
+                .row
+                  .col-sm-1
+                  .col-sm-10.text-left
+                    p(style='margin: 4px; font-size: 16px;')
         h3.mb-0(slot='header')
           strong Detail
 </template>
@@ -87,7 +114,7 @@ export default {
       if (k == null || this.cStudent.answer[0]['analytics'].length <= 0) {
         return null
       } else {
-        return this.cStudent.answer[0]['analytics'][k]['class']
+        return this.cStudent.answer[0]['analytics'][k]
       }
     }
   }
