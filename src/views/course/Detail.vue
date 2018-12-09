@@ -23,7 +23,9 @@ export default {
         gender: '',
         f_gender: '',
         answer: [{
-          f_finished_at: ''
+          f_finished_at: '',
+          accumulation: 0,
+          analytics: {}
         }]
       }
     }

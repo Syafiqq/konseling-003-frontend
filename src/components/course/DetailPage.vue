@@ -8,7 +8,7 @@
               .col-sm-12
                 .row.vertical-align
                   .col-sm-12.text-center
-                    p#content_welcome.margin-bottom-4(style='margin-top: 12px;font-weight: bold; font-size: 16px')
+                    p.margin-bottom-4(style='margin-top: 12px;font-weight: bold; font-size: 16px')
                       | &nbsp;LAPORAN INVENTORI
                       i &nbsp;TRUTHFULNESS
                       | &nbsp;SISWA SMA
@@ -44,6 +44,20 @@
                     p Pengisian
                   .col-sm-3
                     p : {{this.cStudent.answer[0]['f_finished_at'] || 0}}
+                .row
+                  .col-sm-1
+                  .col-sm-10.text-center
+                    p(style='font-weight: bold; font-size: 16px; margin: 8px') HASIL ANALISA
+                    p(style='text-align: justify')
+                      |  Berdasarkan pengisian inventori
+                      i  Truthfulnesss
+                      b  {{this.cStudent.name || '-'}}
+                      |  memiliki tingkat kejujuran
+                      b  {{this.cStudent.answer[0]['accumulation'].toFixed(2)  || 0}}
+                      |  % dan termasuk dalam klasifikasi
+                      b  {{this.cStudentClass || '-'}}
+                .row
+                  .col-sm-12
         h3.mb-0(slot='header')
           strong Detail
 </template>
@@ -58,11 +72,23 @@ export default {
   data () {
     return {}
   },
-  methods: {},
+  methods: {
+    _ () {
+      return window._
+    }
+  },
   watch: {},
   computed: {
     cStudent () {
       return this.$props.student || {}
+    },
+    cStudentClass () {
+      let k = this._().findKey(this.cStudent.answer[0]['analytics'], (o) => this.cStudent.answer[0]['accumulation'] > o.guard.min && this.cStudent.answer[0]['accumulation'] <= o.guard.max)
+      if (k == null || this.cStudent.answer[0]['analytics'].length <= 0) {
+        return null
+      } else {
+        return this.cStudent.answer[0]['analytics'][k]['class']
+      }
     }
   }
 }
